@@ -1,7 +1,7 @@
 /*
  * Name        : lab_1.cpp
- * Author      : FILL IN
- * Description : FILL IN
+ * Author      : Gabrielle Lee
+ * Description : First lab of the Year
  */
 
 #include <iostream>
@@ -23,25 +23,35 @@ std::vector<int> failed_tests;
 
 // Program Execution Starts Here
 int main() {
-  // (1) Declare a string variable named user_name
-
+ 
+  // (1) SDeclare a string variable named user_name
+   std::string user_name;
+ 
   // (2) Declare a character variable named programmed_before and another named
   //     my_character. Initialize both of them to the value 'z'
+  char programmed_before = 'z';
+  char my_character = 'z';
 
   // (3) Display a welcome message to standard output
+       std::cout << "Welcome!\n";
 
   // (4) Prompt the user for their first name
+      std::cout << "Enter your first name...\n";
 
   // (5) Read the name from standard input and store in the variable user_name
+     std::cin >> user_name;
 
   // (6) Display the message "Nice to meet you, NAME" where NAME is replaced
   //     with the value of user_name
+     std::cout << "Nice to meet you, " << user_name << std::endl;
 
   // (7) Ask the user if they have programmed before. Make sure you inform them
   //     that you want the answer as a single character (y/n)
-
+     std::cout << "Have you ever programmed before?(y/n)\n";
+    
   // (8): Read in the answer from standard input and store in the variable
   //      programmed_before
+   std::cin >> programmed_before;
 
   
   // For testing (DO NOT ALTER)
