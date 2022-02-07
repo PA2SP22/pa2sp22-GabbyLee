@@ -65,6 +65,34 @@ int main() {
  */
 string Goldilocks(string item, int number) {
   // CODE HERE
+     if (item == "porridge" && number == 1 ){ 
+    return "This porridge is too hot";
+  }
+   else if (item == "porridge" && number == 2 ){ 
+    return "This porridge is too cold";
+  }
+   else if (item == "porridge" && number == 3 ){ 
+    return "This porridge is just right";
+  }
+   else if (item == "chair" && number == 1 ){ 
+    return "This chair is too big";
+  }
+   else if (item == "chair" && number == 2 ){ 
+    return "This chair is too small";
+  }
+   else if (item == "chair" && number == 3 ){ 
+    return "This chair is just right";
+  }
+   else if (item == "bed" && number == 1 ){ 
+    return "This bed is too big";
+  }
+   else if (item == "bed" && number == 2 ){ 
+    return "This bed is too big";
+  }
+  else{
+ return "This bed is just right";
+  } 
+
 }
 
 /*
@@ -82,7 +110,7 @@ string Goldilocks(string item, int number) {
 int RockScissorPaper(char player_one, char player_two) {
   // YOU MUST USE A SWITCH IN THIS FUNCTION
   // CODE HERE
-}
+
 
 /*
  * Return a string that contains a character (taken from the parameter
@@ -128,6 +156,11 @@ string ToUpper(string input) {
  */
 char GetCharacter(string input, int char_index) {
   // CODE HERE
+  if ((char_index >=0) && (char_index<input.length()){
+ return input.charAT(char_index);
+  }
+  else return "\O"
+  
 }
 
 // For testing (DO NOT ALTER)
