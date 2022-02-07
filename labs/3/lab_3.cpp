@@ -152,7 +152,7 @@ if (player_two =='p'){
  return 1;
  break;
 }
-if(player_two == player_one){
+if (player_two == 's'){
   return 3;
   break;
 }
@@ -213,7 +213,7 @@ string ToUpper(string input) {
   // CODE HERE
   int i;
   
-  for (i=0; !(i = input.length()); i++){
+  for (i=0; i != input.length() ; i++){
     input[i] = toupper(input[i]);
 }
   return input;
