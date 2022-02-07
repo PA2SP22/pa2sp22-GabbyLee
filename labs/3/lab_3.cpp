@@ -1,6 +1,6 @@
 /*
  * Name        : lab_3.cpp
- * Author      : FILL IN
+ * Author      : Gabrielle Lee
  * Description : Using branching statements, looping statements and string and
  *               character functions complete the functions
  */
@@ -84,10 +84,10 @@ string Goldilocks(string item, int number) {
     return "This chair is just right";
   }
    else if (item == "bed" && number == 1 ){ 
-    return "This bed is too big";
+    return "This bed is too hard";
   }
    else if (item == "bed" && number == 2 ){ 
-    return "This bed is too big";
+    return "This bed is too soft";
   }
   else{
  return "This bed is just right";
@@ -110,6 +110,59 @@ string Goldilocks(string item, int number) {
 int RockScissorPaper(char player_one, char player_two) {
   // YOU MUST USE A SWITCH IN THIS FUNCTION
   // CODE HERE
+  player_one= tolower(player_one);
+  player_two= tolower(player_two);
+
+switch (player_one){
+  
+case 'r':
+if (player_two == 'r'){
+  return 3;
+  break;
+}
+if (player_two =='p'){
+ return 2;
+ break;
+}
+if(player_two == 's'){
+  return 1;
+  break;
+}
+
+case 'p':
+if (player_two == 'r'){
+  return 1;
+  break;
+}
+if (player_two =='p'){
+ return 3;
+ break;
+}
+if(player_two == 's'){
+  return 2;
+  break;
+}
+
+case 's':
+if (player_two == 'r'){
+  return 2;
+  break;
+}
+if (player_two =='p'){
+ return 1;
+ break;
+}
+if(player_two == player_one){
+  return 3;
+  break;
+}
+
+default:
+return 0;
+break;
+}
+
+}
 
 
 /*
@@ -121,8 +174,16 @@ int RockScissorPaper(char player_one, char player_two) {
  *                  followed by a space, followed by the ASCII integer value of
  *                  the char
  */
-string CharWithAsciiValueAsString(char character) {
+string CharWithAsciiValueAsString(char character){
   // CODE HERE
+int asciiNum;
+asciiNum = (int)character;
+
+std::stringstream sout;
+sout << character << " " << asciiNum;
+
+return sout.str();
+  
 
   // HINT: try a stringstream here
 }
@@ -134,6 +195,13 @@ string CharWithAsciiValueAsString(char character) {
  */
 string ToLower(string input) {
   // CODE HERE
+  int i;
+    
+  for (i=0; i != input.length(); i++){
+    input[i]=tolower(input[i]);
+}
+  return input;
+
 }
 
 /*
@@ -143,6 +211,12 @@ string ToLower(string input) {
  */
 string ToUpper(string input) {
   // CODE HERE
+  int i;
+  
+  for (i=0; !(i = input.length()); i++){
+    input[i] = toupper(input[i]);
+}
+  return input;
 }
 
 /*
@@ -156,10 +230,15 @@ string ToUpper(string input) {
  */
 char GetCharacter(string input, int char_index) {
   // CODE HERE
-  if ((char_index >=0) && (char_index<input.length()){
- return input.charAT(char_index);
+  if ((char_index >= 0) && (char_index < input.size() ) ){
+    
+  return input[char_index];
+  
   }
-  else return "\O"
+  
+  else {
+    return 0; 
+  }
   
 }
 
