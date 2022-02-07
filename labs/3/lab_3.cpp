@@ -65,36 +65,26 @@ int main() {
  */
 string Goldilocks(string item, int number) {
   // CODE HERE
-     if (item == "porridge" && number == 1 ){ 
+  if (item == "porridge" && number == 1) {
     return "This porridge is too hot";
-  }
-   else if (item == "porridge" && number == 2 ){ 
-    return "This porridge is too cold";
-  }
-   else if (item == "porridge" && number == 3 ){ 
-    return "This porridge is just right";
-  }
-   else if (item == "chair" && number == 1 ){ 
-    return "This chair is too big";
-  }
-   else if (item == "chair" && number == 2 ){ 
-    return "This chair is too small";
-  }
-   else if (item == "chair" && number == 3 ){ 
-    return "This chair is just right";
-  }
-   else if (item == "bed" && number == 1 ){ 
-    return "This bed is too hard";
-  }
-   else if (item == "bed" && number == 2 ){ 
-    return "This bed is too soft";
-  }
-  else{
- return "This bed is just right";
-  } 
-
+} else if (item == "porridge" && number == 2) {
+return "This porridge is too cold";
+} else if (item == "porridge" && number == 3) {
+return "This porridge is just right";
+} else if (item == "chair" && number == 1) {
+return "This chair is too big";
+} else if (item == "chair" && number == 2) {
+return "This chair is too small";
+} else if (item == "chair" && number == 3) {
+return "This chair is just right";
+} else if (item == "bed" && number == 1) {
+return "This bed is too hard";
+} else if (item == "bed" && number == 2) {
+return "This bed is too soft";
+} else {
+  return "This bed is just right";
+} 
 }
-
 /*
  * Compute the outcome of a round of a rock-scissor-paper game. Lowercase or
  * uppercase values for player_one and player_two arguments are acceptable.
@@ -112,59 +102,50 @@ int RockScissorPaper(char player_one, char player_two) {
   // CODE HERE
   player_one= tolower(player_one);
   player_two= tolower(player_two);
-
-switch (player_one){
-  
+switch (player_one) {
 case 'r':
-if (player_two == 'r'){
+if (player_two == 'r') {
   return 3;
   break;
 }
-if (player_two =='p'){
- return 2;
- break;
+if (player_two =='p') {
+return 2;
+break;
 }
-if(player_two == 's'){
-  return 1;
-  break;
+if (player_two == 's'||'S') {
+return 1;
+break;
 }
-
 case 'p':
-if (player_two == 'r'){
-  return 1;
-  break;
+if (player_two == 'r') {
+return 1;
+break;
 }
-if (player_two =='p'){
- return 3;
- break;
+if (player_two =='p') {
+return 3;
+break;
 }
-if(player_two == 's'){
-  return 2;
-  break;
-}
-
-case 's':
-if (player_two == 'r'){
-  return 2;
-  break;
-}
-if (player_two =='p'){
- return 1;
- break;
-}
-if (player_two == 's'){
-  return 3;
-  break;
-}
-
-default:
-return 0;
+if (player_two == 's'||'S') {
+return 2;
 break;
 }
 
+case 's':
+if (player_two == 'r') {
+return 2;
+break;
 }
 
-
+if (player_two =='p') {
+return 1;
+break;
+}
+if (player_two == 's'||'S') {
+return 3;
+break;
+}
+}
+}
 /*
  * Return a string that contains a character (taken from the parameter
  * c) and its ASCII integer value. For example, If the char passed in is 'A',
@@ -174,20 +155,17 @@ break;
  *                  followed by a space, followed by the ASCII integer value of
  *                  the char
  */
-string CharWithAsciiValueAsString(char character){
+string CharWithAsciiValueAsString(char character) {
   // CODE HERE
 int asciiNum;
-asciiNum = (int)character;
+asciiNum = <int>(character);
 
 std::stringstream sout;
 sout << character << " " << asciiNum;
 
 return sout.str();
-  
-
   // HINT: try a stringstream here
 }
-
 /*
  * Return the input string with all characters converted to lowercase.
  * @param string input - The string that will be converted to all lowercase
@@ -195,15 +173,12 @@ return sout.str();
  */
 string ToLower(string input) {
   // CODE HERE
-  int i;
-    
-  for (i=0; i != input.length(); i++){
-    input[i]=tolower(input[i]);
+int i;
+for (i = 0; (i < input.size()); i++) {
+    input[i] = tolower(input[i]);
 }
   return input;
-
 }
-
 /*
  * Return the input string with all characters converted to uppercase.
  * @param string input - The string that will be converted to all uppercase
@@ -212,13 +187,11 @@ string ToLower(string input) {
 string ToUpper(string input) {
   // CODE HERE
   int i;
-  
-  for (i=0; i != input.length() ; i++){
+  for (i = 0; (i < input.length()+1 ) ; i++) {
     input[i] = toupper(input[i]);
 }
   return input;
 }
-
 /*
  * Return the character from the input string at index char_index.
  * @param string input - The string from which the character will be taken
@@ -230,18 +203,12 @@ string ToUpper(string input) {
  */
 char GetCharacter(string input, int char_index) {
   // CODE HERE
-  if ((char_index >= 0) && (char_index < input.size() ) ){
-    
-  return input[char_index];
-  
-  }
-  
-  else {
-    return 0; 
-  }
-  
+if ((char_index >= 0) && (char_index < input.size())) {
+return input[char_index];
+} else {
+return 0;
 }
-
+}
 // For testing (DO NOT ALTER)
 void UnitTest() {
   cout << string(40, '-') << endl;
