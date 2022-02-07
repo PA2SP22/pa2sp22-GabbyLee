@@ -83,7 +83,7 @@ return "This bed is too hard";
 return "This bed is too soft";
 } else {
   return "This bed is just right";
-} 
+}
 }
 /*
  * Compute the outcome of a round of a rock-scissor-paper game. Lowercase or
@@ -143,6 +143,10 @@ break;
 if (player_two == 's'||'S') {
 return 3;
 break;
+
+default:
+return 0;
+break;
 }
 }
 }
@@ -158,7 +162,7 @@ break;
 string CharWithAsciiValueAsString(char character) {
   // CODE HERE
 int asciiNum;
-asciiNum = <int>(character);
+asciiNum = static_cast< int >(character);
 
 std::stringstream sout;
 sout << character << " " << asciiNum;
@@ -174,7 +178,9 @@ return sout.str();
 string ToLower(string input) {
   // CODE HERE
 int i;
-for (i = 0; (i < input.size()); i++) {
+int stringSize = input.length();
+
+for (i = 0; i <= stringSize; i++) {
     input[i] = tolower(input[i]);
 }
   return input;
@@ -187,7 +193,8 @@ for (i = 0; (i < input.size()); i++) {
 string ToUpper(string input) {
   // CODE HERE
   int i;
-  for (i = 0; (i < input.length()+1 ) ; i++) {
+  int stringSize = input.length();
+  for (i = 0; i <= stringSize;  i++) {
     input[i] = toupper(input[i]);
 }
   return input;
@@ -203,7 +210,8 @@ string ToUpper(string input) {
  */
 char GetCharacter(string input, int char_index) {
   // CODE HERE
-if ((char_index >= 0) && (char_index < input.size())) {
+int stringSize = input.length();
+if ((char_index >= 0) && (char_index < stringSize )) {
 return input[char_index];
 } else {
 return 0;
