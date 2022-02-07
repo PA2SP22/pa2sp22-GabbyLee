@@ -74,7 +74,6 @@ std::cout << nickels << "\n";
 pennies = remaining_value/1;
 remaining_value %= 1;
 std::cout << pennies << "\n";
-
 }
 
 /*
@@ -90,39 +89,33 @@ std::cout << pennies << "\n";
  */
 double LaunchHumanCannonball(double initial_velocity, double launch_angle) {
        double radian_angle, degree_launch_angle;
-       double x_velocity,x_distance, flight_time, y_velocity;
+       double x_velocity, x_distance, flight_time, y_velocity;
        degree_launch_angle = launch_angle;
-  
-  // (1) Convert launch_angle from degrees to radians
-  //     [radian_angle = degree_launch_angle * (kPI/180)]
-  // CODE HERE
-   radian_angle = degree_launch_angle*(kPI/180);
-
+// (1) Convert launch_angle from degrees to radians
+// [radian_angle = degree_launch_angle * (kPI/180)]
+// CODE HERE
+radian_angle = degree_launch_angle*(kPI/180);
   // (2) Compute final horizontal/x velocity
-  //     [x_velocity = initial_velocity * cos(radian_angle)]
+  //   [x_velocity = initial_velocity * cos(radian_angle)]
   // CODE HERE
   x_velocity = initial_velocity *cos(radian_angle);
 
   // (3) Compute final vertical/y velocity
   //     [y_velocity = initial_velocity * sin(radian_angle) * -1]
   // CODE HERE
-   y_velocity = initial_velocity * sin(radian_angle)*-1;
+y_velocity = initial_velocity * sin(radian_angle)*-1;
 
-
-  // (4) Compute time of flight 
+  // (4) Compute time of flight
   //     [flight_time = (y_velocity) * 2 / -9.8]
   // CODE HERE
-   flight_time = (y_velocity) * 2 / -9.8;
+flight_time = (y_velocity) * 2 / -9.8;
 
-  // (5) Compute horizontal/x distance travelled
-  //     [x_distance = x_velocity * flight_time]
-  // CODE HERE
+// (5) Compute horizontal/x distance travelled
+//     [x_distance = x_velocity * flight_time]
+// CODE HERE
   x_distance = x_velocity * flight_time;
   return x_distance;
-  
-
 }
-
 // For testing (DO NOT ALTER)
 void UnitTest() {
   cout << string(40, '-') << endl;
