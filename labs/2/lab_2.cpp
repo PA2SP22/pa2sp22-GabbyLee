@@ -1,10 +1,6 @@
 /*
  * Name        : lab_2.cpp
-<<<<<<< HEAD
  * Author      : Gabrielle Lee
-=======
- * Author      : FILL IN
->>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
  * Description : Using Arithmetic to finish the functions MakeChange() and
  *               LaunchHumanCannonball()
  */
@@ -36,10 +32,7 @@ double LaunchHumanCannonball(double initial_velocity, double launch_angle);
 
 // Create a Constant named kPI which is initialized to 3.1415927
 // FILL IN
-<<<<<<< HEAD
 const double kPI = 3.1415927;
-=======
->>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 
 // Program Execution Starts Here
 int main() {
@@ -65,7 +58,6 @@ int main() {
 void MakeChange(int initial_value, int &quarters, int &dimes, int &nickels,
                 int &pennies) {
   // CODE HERE
-<<<<<<< HEAD
   int remaining_value;
 quarters = initial_value / 25;
 remaining_value = initial_value % 25;
@@ -82,8 +74,6 @@ std::cout << nickels << "\n";
 pennies = remaining_value/1;
 remaining_value %= 1;
 std::cout << pennies << "\n";
-=======
->>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 }
 
 /*
@@ -98,7 +88,6 @@ std::cout << pennies << "\n";
  *                   will travel
  */
 double LaunchHumanCannonball(double initial_velocity, double launch_angle) {
-<<<<<<< HEAD
        double radian_angle, degree_launch_angle;
        double x_velocity, x_distance, flight_time, y_velocity;
        degree_launch_angle = launch_angle;
@@ -110,20 +99,10 @@ radian_angle = degree_launch_angle*(kPI/180);
   //   [x_velocity = initial_velocity * cos(radian_angle)]
   // CODE HERE
   x_velocity = initial_velocity *cos(radian_angle);
-=======
-  // (1) Convert launch_angle from degrees to radians
-  //     [radian_angle = degree_launch_angle * (kPI/180)]
-  // CODE HERE
-
-  // (2) Compute final horizontal/x velocity
-  //     [x_velocity = initial_velocity * cos(radian_angle)]
-  // CODE HERE
->>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 
   // (3) Compute final vertical/y velocity
   //     [y_velocity = initial_velocity * sin(radian_angle) * -1]
   // CODE HERE
-<<<<<<< HEAD
 y_velocity = initial_velocity * sin(radian_angle)*-1;
 
   // (4) Compute time of flight
@@ -137,19 +116,6 @@ flight_time = (y_velocity) * 2 / -9.8;
   x_distance = x_velocity * flight_time;
   return x_distance;
 }
-=======
-
-  // (4) Compute time of flight 
-  //     [flight_time = (y_velocity) * 2 / -9.8]
-  // CODE HERE
-
-  // (5) Compute horizontal/x distance travelled
-  //     [x_distance = x_velocity * flight_time]
-  // CODE HERE
-
-}
-
->>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 // For testing (DO NOT ALTER)
 void UnitTest() {
   cout << string(40, '-') << endl;
