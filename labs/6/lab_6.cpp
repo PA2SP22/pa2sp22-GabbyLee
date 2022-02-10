@@ -1,6 +1,6 @@
 /*
  * Name        : lab_6.cpp
- * Author      : FILL IN
+ * Author      : Gabrielle Lee
  * Description : Practicing Functions
  */
 
@@ -25,7 +25,7 @@ using std::string;
  */
 // CODE HERE (FUNCTION PROTOTYPE)
 void Hello(){
-  std::out<<"Hello World!";
+  out<<"Hello World!";
   
 }
 

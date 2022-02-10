@@ -66,10 +66,9 @@ int main() {
  */
 string MakeString(string label, double value, char separator) {
   // CODE HERE
-    stringstream ss;
-    ss << label << value << separator;
-    return ss.str();
-    
+stringstream sout;
+sout << label << " " << separator << " " << value;
+return sout.str();
 }
 
 /*
@@ -81,16 +80,21 @@ string MakeString(string label, double value, char separator) {
  *                when value is length 0 or value is length > 1
  */
 char StringToChar(string value) {
-  
 // CODE HERE
-stringSize=value.lenghth();
 
-if(stringSize == 0 || stringSize > 1){
-  retrun 0;
+if (value == "") {
+  return '\0';
 }
-else { retrun value[0]; }
+int strgSize = value.length();
+char f = value.at(0);
 
 
+if(strgSize == 0 || strgSize > 1) {
+return '\0';
+
+} else {
+  return f;
+}
 }
 
 /*
@@ -127,6 +131,16 @@ int StringToInt(string value) {
  */
 double StringToDouble(string value) {
   // CODE HERE
+double dubl;
+stringstream ss;
+
+  ss << value;
+
+while (!isdigit(ss.peek())) {
+  ss.ignore(1);
+}
+ss >> dubl;
+return dubl;
 }
 
 /*
@@ -142,6 +156,11 @@ double StringToDouble(string value) {
  */
 bool StringToBool(string value) {
   // CODE HERE
+if(value.at(0) == 't') {
+return true;
+} else {
+return false;
+}
 }
 
 // For testing (DO NOT ALTER)
