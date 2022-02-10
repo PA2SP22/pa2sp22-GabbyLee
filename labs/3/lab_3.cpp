@@ -1,6 +1,10 @@
 /*
  * Name        : lab_3.cpp
+<<<<<<< HEAD
  * Author      : Gabrielle Lee
+=======
+ * Author      : FILL IN
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
  * Description : Using branching statements, looping statements and string and
  *               character functions complete the functions
  */
@@ -65,6 +69,7 @@ int main() {
  */
 string Goldilocks(string item, int number) {
   // CODE HERE
+<<<<<<< HEAD
   if (item == "porridge" && number == 1) {
     return "This porridge is too hot";
 } else if (item == "porridge" && number == 2) {
@@ -85,6 +90,10 @@ return "This bed is too soft";
   return "This bed is just right";
 }
 }
+=======
+}
+
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 /*
  * Compute the outcome of a round of a rock-scissor-paper game. Lowercase or
  * uppercase values for player_one and player_two arguments are acceptable.
@@ -100,6 +109,7 @@ return "This bed is too soft";
 int RockScissorPaper(char player_one, char player_two) {
   // YOU MUST USE A SWITCH IN THIS FUNCTION
   // CODE HERE
+<<<<<<< HEAD
   player_one= tolower(player_one);
   player_two= tolower(player_two);
 switch (player_one) {
@@ -150,6 +160,10 @@ break;
 }
 }
 }
+=======
+}
+
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 /*
  * Return a string that contains a character (taken from the parameter
  * c) and its ASCII integer value. For example, If the char passed in is 'A',
@@ -161,6 +175,7 @@ break;
  */
 string CharWithAsciiValueAsString(char character) {
   // CODE HERE
+<<<<<<< HEAD
 int asciiNum;
 asciiNum = static_cast< int >(character);
 
@@ -170,6 +185,12 @@ sout << character << " " << asciiNum;
 return sout.str();
   // HINT: try a stringstream here
 }
+=======
+
+  // HINT: try a stringstream here
+}
+
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 /*
  * Return the input string with all characters converted to lowercase.
  * @param string input - The string that will be converted to all lowercase
@@ -177,6 +198,7 @@ return sout.str();
  */
 string ToLower(string input) {
   // CODE HERE
+<<<<<<< HEAD
 int i;
 int stringSize = input.length();
 
@@ -185,6 +207,10 @@ for (i = 0; i <= stringSize; i++) {
 }
   return input;
 }
+=======
+}
+
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 /*
  * Return the input string with all characters converted to uppercase.
  * @param string input - The string that will be converted to all uppercase
@@ -192,6 +218,7 @@ for (i = 0; i <= stringSize; i++) {
  */
 string ToUpper(string input) {
   // CODE HERE
+<<<<<<< HEAD
   int i;
   int stringSize = input.length();
   for (i = 0; i <= stringSize;  i++) {
@@ -199,6 +226,10 @@ string ToUpper(string input) {
 }
   return input;
 }
+=======
+}
+
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 /*
  * Return the character from the input string at index char_index.
  * @param string input - The string from which the character will be taken
@@ -210,6 +241,7 @@ string ToUpper(string input) {
  */
 char GetCharacter(string input, int char_index) {
   // CODE HERE
+<<<<<<< HEAD
 int stringSize = input.length();
 if ((char_index >= 0) && (char_index < stringSize )) {
 return input[char_index];
@@ -217,6 +249,10 @@ return input[char_index];
 return 0;
 }
 }
+=======
+}
+
+>>>>>>> 1c0d4ab2759781cf0a510c5de4fa21346a844549
 // For testing (DO NOT ALTER)
 void UnitTest() {
   cout << string(40, '-') << endl;

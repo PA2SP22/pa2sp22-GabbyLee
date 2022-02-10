@@ -66,6 +66,10 @@ int main() {
  */
 string MakeString(string label, double value, char separator) {
   // CODE HERE
+    stringstream ss;
+    ss << label << value << separator;
+    return ss.str();
+    
 }
 
 /*
@@ -77,7 +81,16 @@ string MakeString(string label, double value, char separator) {
  *                when value is length 0 or value is length > 1
  */
 char StringToChar(string value) {
-  // CODE HERE
+  
+// CODE HERE
+stringSize=value.lenghth();
+
+if(stringSize == 0 || stringSize > 1){
+  retrun 0;
+}
+else { retrun value[0]; }
+
+
 }
 
 /*
@@ -118,7 +131,7 @@ double StringToDouble(string value) {
 
 /*
  * Useful when accepting input from stdin using the getline function.
- * Convert a string containing an boolean value (such as a string captured from
+ * Convert azn value (such as a string captured from
  * stdin) into a bool. Return true if the first character is 'T'
  * (case-insensitive), false if the first character is 'F' (case-insensitive),
  * and false on anything else.
