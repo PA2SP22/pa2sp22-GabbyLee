@@ -24,12 +24,10 @@ using std::string;
  * Display "Hello world!" to stdout (no newline character after)
  */
 // CODE HERE (FUNCTION PROTOTYPE)
-void Hello(){
-  out<<"Hello World!";
-  
-}
-
 void Hello();
+
+
+// void Hello();
 
 /*
  * function name: PrintMessage
@@ -40,10 +38,7 @@ void Hello();
  * Display message to stdout (no newline character after)
  */
 // CODE HERE (FUNCTION PROTOTYPE)
-void PrintMessage(string message){
- std::out << message;
- 
-}
+void PrintMessage(string message);
 /*
  * function name: GetAnswer
  * parameters: none
@@ -53,10 +48,7 @@ void PrintMessage(string message){
  * Return the value 42
  */
 // CODE HERE (FUNCTION PROTOTYPE)
-int GetAnswer(){
-  return 42;
-
-}
+int GetAnswer();
 
 /*
  * function name: FindLarger
@@ -68,11 +60,7 @@ int GetAnswer(){
  * if the values are equivalent.
  */
 // CODE HERE (FUNCTION PROTOTYPE)
-int FindLarger(int const x, int const y){
-  int largest = Max(x, y);
-  return largest;
-
-}
+int FindLarger(int const &x, int const &y);
 
 /*
  * function name: GetStats
@@ -87,12 +75,7 @@ int FindLarger(int const x, int const y){
  * characters in the first parameter (string)
  */
 // CODE HERE (FUNCTION PROTOTYPE)
- int  GetStats(strting s, int x, int y ){
-  stringSize =  s.length();
-  x = upperCases;
-  y = lowerCases;
-  return stringSize;
- }
+int GetStats(const string &st,  int &upper, int &lower);
 /*
  * function name: BuildMessage
  * parameters: string (const call-by-reference), bool (const call-by-reference)
@@ -106,11 +89,7 @@ int FindLarger(int const x, int const y){
  * "Message: empty".
  */
 // CODE HERE (FUNCTION PROTOTYPE)
-string BuildMessage(string string = "", bool isTrue ){
-  
-  
-  
-}
+string BuildMessage(string const &str= " " ,  bool const &isTrue = false);
 
 
 // For testing (DO NOT ALTER)
@@ -132,10 +111,75 @@ int main() {
 }
 
 // CODE HERE (FUNCTION DEFINITIONS)
+// Print Hello Message
 void Hello() {
   cout << "Hello world!";
 }
 
+// Print Message function
+void PrintMessage(string message) {
+cout << message;
+}
+
+// Get answer function
+int GetAnswer() {
+  return 42;
+}
+
+// Find the largest number function
+int FindLarger(int const &x, int const &y) {
+int largest = fmax(x, y);
+
+  return largest;
+}
+// GetStats function
+int GetStats(const string &st,  int &upper, int &lower ) {
+int lcount = 0, ucount = 0, i;
+int stringSize = st.length();
+
+// count upper and lower case
+for (i = 0; i < stringSize; i++) {
+if (isupper(st.at(i))) {
+       ucount++;
+     }
+
+     if (islower(st.at(i))) {
+        lcount++;
+}
+     }
+// Assigns upper and lowercase then returns string size.
+upper = ucount;
+lower = lcount;
+  return stringSize;
+}
+
+// BuildMessage function
+string BuildMessage(string const &str, bool const &isTrue) {
+  string string1 = "Message: ";
+  string str2;
+  string finalString;
+  int size;
+  int i;
+if ((str.empty() == 1 || str == " ") && (isTrue == false)) {
+     str2 = "empty";
+
+} else if (str.empty() == 0 && isTrue == false) {
+    str2 = str;
+  } else if (isTrue == true) {
+    str2 = str;
+    size = str2.length();
+
+  for (i = 0; i < size;  i++) {
+  str2.at(i) = toupper(str2.at(i));
+}
+
+} else { str2 = "empty";
+}
+
+finalString = string1 + str2;
+
+return finalString;
+}
 // For testing (DO NOT ALTER)
 void UnitTest() {
   cout << string(40, '-') << endl;

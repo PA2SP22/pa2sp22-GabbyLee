@@ -1,7 +1,7 @@
 /*
  * Name        : FILL IN
- * Author      : FILL IN
- * Description : FILL IN
+ * Author      : Gabrielle Lee
+ * Description : Assignment 1
  * Sources     : FILL IN
  */
 

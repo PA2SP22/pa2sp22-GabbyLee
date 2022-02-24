@@ -5,6 +5,7 @@
  */
 #include <fstream>
 #include <iostream>
+#include <cstdlib>
 #include <map>
 #include <string>
 using std::cout;
@@ -56,7 +57,23 @@ int main() {
   return 0;
 }
 
-// CODE HERE -- FUNCTION DEFINITION
+bool ProcessFile(string filename){
+  int lineVal;
+  
+  ifstream fin(filename);
+  
+    if (fin.fail() || fout.fail()) {
+    cerr << "Error opening/creating one of the files.\n";
+    exit(1);
+  }
+  while (!fin.eof()){
+    getline(fin, lineVal);
+    
+    if lineVal = 10
+    fout <<line<<endl
+  }
+  
+}// CODE HERE -- FUNCTION DEFINITION
 
 // For testing (DO NOT ALTER)
 void UnitTest() {
