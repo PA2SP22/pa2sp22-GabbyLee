@@ -79,7 +79,7 @@ bool EncryptString(string &str, int numShift){
     // loop to shift letters inthe given string upper and lowercase
  for(i=0; i<stringSize; i++){
      if (islower(str.at(i))){
-       str.at(i) =( ( (str.at(i)-97) + numShift) % 26) + 97;
+       str.at(i) =( ( (str.at(i)-97+26) + numShift) % 26) + 97;
        if(str.at(i) > 'z'){
          str.at(i)-'a';
        
@@ -91,7 +91,7 @@ bool EncryptString(string &str, int numShift){
      }
     
   if (isupper(str.at(i))){
-  str.at(i) =( ( (str.at(i)-65) + numShift) % 26) + 65;
+  str.at(i) =( ( (str.at(i)-65+26) + numShift) % 26) + 65;
    if(str.at(i) > 'Z'|| str.at(i)<'A'){
          str.at(i)-'A';
        
@@ -122,10 +122,10 @@ bool DecryptString (string &st, int numShift){
  for(i =0; i < stringSize; i++){
    
    if (islower(st.at(i))){
-       st.at(i) =( ( (st.at(i)-97) - numShift) % 26) + 97;
+       st.at(i) =( ( (st.at(i)-97) - numShift+26) % 26) + 97;
    }
     if (isupper(st.at(i))){
-  st.at(i) =( ( (st.at(i)-65) - numShift) % 26) + 65;
+  st.at(i) =( ( (st.at(i)-65) - numShift+26) % 26) + 65;
     
  }
  }
