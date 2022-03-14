@@ -1,6 +1,6 @@
 /*
  * Name        : lab_8.cpp
- * Author      : FILL IN
+ * Author      : Gabrielle Lee
  * Description : Working with Command Line Arguments
  */
 #include <fstream>
@@ -63,34 +63,34 @@ void ProcessArguments(int argc, char *argv[]) {
   int i;
   string input;
   int size = argc;
-  
 
+  if (argc > 1) {
 for (i = 1; i < size; i++) {
       input = argv[i];
-      
-     if (input == "10") {
+
+if (input == "10") {
 OnTen();
-}
-    else if (input == "20") {
+
+} else if (input == "20") {
 OnTwenty();
-}
 
-  else  if (input == "30") {
+} else  if (input == "30") {
 OnThirty();
-}
 
-   else if (input == "40") {
+} else if (input == "40") {
 OnForty();
-}
 
-   else  if (input == "50") {
+} else  if (input == "50") {
 OnFifty();
 
-  } else {
+} else {
     OnError();
 }
 }
-
+} else {
+  OnError();
+  exit(1);
+}
 }
 // For testing (DO NOT ALTER)
 void UnitTest(int argc, char *argv[]) {
