@@ -18,24 +18,19 @@ using std::stringstream;
  * A class to model a simple spaceship for a science fiction
  * game or story.
  */
- 
 class Spaceship {
  public:
- 
   /*
    * Set the name of this Spaceship.
    * @param string name - The name for this Spaceship
    */
-  //mutator declarations
   void set_name(string name);
-
   /*
    * Set the top speed of this Spaceship.
    * @param double top_speed - The top speed for this Spaceship in warp
    */
-   
-  void set_top_speed(double top_speed);
 
+  void set_top_speed(double top_speed);
   /*
    * Set the fuel source of this Spaceship.
    * @param string fuel_source - A fuel source for this Spaceship
@@ -47,32 +42,27 @@ class Spaceship {
    * @param int crew_capacity - A crew capacity for this Spaceship
    */
   void set_crew_capacity(int crew_capacity);
-
   /*
    * Get the name of this Spaceship.
    * @return string - The name of this Spaceship
    */
-   
-   //mutators
-  string name() const;  
+
+string name() const;
   /*
    * Get the top speed of this Spaceship.
    * @return double - The top speed of this Spaceship
    */
   double top_speed() const;
-
   /*
    * Get the fuel source of this Spaceship.
    * @return string - The fuel source of this Spaceship
    */
   string fuel_source() const;
-
   /*
    * Get the crew capacity of this Spaceship.
    * @return int - The crew capacity of this Spaceship
    */
   int crew_capacity() const;
-
   /*
    * Get a string representation of this Spaceship's specifications.
    * The string will be formatted as
@@ -88,11 +78,10 @@ class Spaceship {
   string ToString() const;
 
  private:
-  string name_;
- // float 
- double top_speed_;
-  string fuel_source_;
-  int crew_capacity_;
+string ship_name_;
+string ship_fuel_source_;
+float top_speed_;
+int crew_capacity_;
 };
 
 // For testing (DO NOT ALTER)
@@ -112,52 +101,42 @@ int main() {
   // This ends program execution
   return 0;
 }
-
 // CODE HERE -- CLASS DEFINITION
 
- 
-  //mutator definitions
-  
-  void Spaceship::set_name(string name) {
-   name_ = name;
+  // Mutator Definitions
+void Spaceship::set_name(string name) {
+ship_name_ = name;
 }
 
-   void Spaceship::set_top_speed(double top_speed) {
-   top_speed_ = top_speed;
+void Spaceship::set_top_speed(double top_speed) {
+top_speed_ = top_speed;
 }
 
-  void Spaceship::set_fuel_source(string fuel_source) {
-   fuel_source_ = fuel_source;
-    
+void Spaceship::set_fuel_source(string fuel_source) {
+ship_fuel_source_ = fuel_source;
 }
 
- void Spaceship::set_crew_capacity(int crew_capacity) {
-   crew_capacity_ = crew_capacity;
+void Spaceship::set_crew_capacity(int crew_capacity) {
+crew_capacity_ = crew_capacity;
 }
-  
-  //accessor definitions
- 
-  string Spaceship::name() const {
-  return name_;
-  }
-    
 
+  // Accessor definitions
 
-  double Spaceship::top_speed() const{
-    return top_speed_;
-    
-  }
+string Spaceship::name() const {
+return ship_name_;
+}
 
-  
-  string Spaceship::fuel_source() const{
-    return fuel_source_;
-  }
+double Spaceship::top_speed() const {
+return top_speed_;
+}
 
-   
-  int Spaceship::crew_capacity() const {
-    return crew_capacity_;
-  }
-  
+string Spaceship::fuel_source() const {
+return ship_fuel_source_;
+}
+
+int Spaceship::crew_capacity() const {
+return crew_capacity_;
+}
   /*
    * Get a string representation of this Spaceship's specifications.
    * The string will be formatted as
@@ -170,19 +149,17 @@ int main() {
    * @uses stringstream
    * @return string - A representation of this Spaceship's specifications
    */
-  string Spaceship::ToString() const{
-  stringstream ss;
- ss.setf(std::ios::fixed|std::ios::showpoint);
-  ss.precision(2);
-    ss << name() << endl << "Top Speed:     Warp "<< top_speed() << endl
-       << "Fuel Source:   " << fuel_source() << endl
-       << "Crew Capacity: " << crew_capacity();
-     
-      
+string Spaceship::ToString() const {
+stringstream ss;
+ss.setf(std::ios::fixed|std::ios::showpoint);
+ss.precision(2);
+
+ss << name() << endl << "Top Speed:     Warp "<< top_speed() << endl
+                     << "Fuel Source:   " << fuel_source() << endl
+                     << "Crew Capacity: " << crew_capacity();
+
       return ss.str();
-  }
-  
- 
+}
 
 
 // For testing (DO NOT ALTER)
