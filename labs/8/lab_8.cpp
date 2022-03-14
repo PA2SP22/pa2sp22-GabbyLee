@@ -59,7 +59,39 @@ int main(int argc, char* argv[]) {
 }
 
 // CODE HERE -- FUNCTION DEFINITION
+void ProcessArguments(int argc, char *argv[]) {
+  int i;
+  string input;
+  int size = argc;
+  
 
+for (i = 1; i < size; i++) {
+      input = argv[i];
+      
+     if (input == "10") {
+OnTen();
+}
+    else if (input == "20") {
+OnTwenty();
+}
+
+  else  if (input == "30") {
+OnThirty();
+}
+
+   else if (input == "40") {
+OnForty();
+}
+
+   else  if (input == "50") {
+OnFifty();
+
+  } else {
+    OnError();
+}
+}
+
+}
 // For testing (DO NOT ALTER)
 void UnitTest(int argc, char *argv[]) {
   if (argc > 1 && strcmp(argv[1], "teacher") == 0 && CheckArgs(argc, argv)) {

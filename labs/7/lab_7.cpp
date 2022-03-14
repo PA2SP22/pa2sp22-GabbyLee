@@ -2,6 +2,7 @@
  * Name        : lab_7.cpp
  * Author      : Gabrielle Lee
  * Description : Working with File I/O
+ https://stackoverflow.com/questions/46292764/check-for-file-existence-in-c-without-creating-file
  */
 #include <fstream>
 #include <iostream>
@@ -10,6 +11,7 @@
 #include <string>
 using std::cout;
 using std::ifstream;
+using std::ofstream;
 using std::endl;
 using std::string;
 using std::map;
@@ -56,24 +58,55 @@ int main() {
   // This ends program execution
   return 0;
 }
+// CODE HERE -- FUNCTION DEFINITION
 
-bool ProcessFile(string filename){
-  int lineVal;
-  
-  ifstream fin(filename);
-  
-    if (fin.fail() || fout.fail()) {
-    cerr << "Error opening/creating one of the files.\n";
-    exit(1);
-  }
-  while (!fin.eof()){
-    getline(fin, lineVal);
-    
-    if lineVal = 10
-    fout <<line<<endl
-  }
-  
-}// CODE HERE -- FUNCTION DEFINITION
+
+bool ProcessFile(string filename) {
+  // variable declarations
+  string line;
+  bool isDone = true;
+
+  // Declare input stream
+  ifstream fin(filename.c_str());
+
+  if (fin.fail()| fin.bad()) {
+       isDone = false;
+       OnError();
+}
+
+  if ( !fin.is_open() ) {
+       isDone = false;
+       OnError();
+
+} else {
+  isDone = true;
+
+  while (!fin.eof()) {
+    getline(fin, line);
+
+  if (line == "10") {
+OnTen();
+
+} else if (line == "20") {
+OnTwenty();
+
+} else if (line == "30") {
+OnThirty();
+
+} else if (line == "40") {
+OnForty();
+
+} else if (line == "50") {
+OnFifty();
+
+} else {
+OnError();
+}
+}
+}
+
+return isDone;
+}
 
 // For testing (DO NOT ALTER)
 void UnitTest() {

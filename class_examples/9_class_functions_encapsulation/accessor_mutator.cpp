@@ -109,6 +109,7 @@ void DayOfYear::Output() {
  * This function will set the variables month_ and day_ to the arguments
  * that are passed in.
  */
+ 
 void DayOfYear::Input(int month, int day) {
   month_ = month;
   day_ = day;

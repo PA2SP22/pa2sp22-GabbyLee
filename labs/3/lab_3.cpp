@@ -65,6 +65,7 @@ int main() {
  */
 string Goldilocks(string item, int number) {
   // CODE HERE
+  // if and else if statments for goldilocks
   if (item == "porridge" && number == 1) {
     return "This porridge is too hot";
 } else if (item == "porridge" && number == 2) {

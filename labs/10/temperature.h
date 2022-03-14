@@ -1,6 +1,6 @@
 /*
  * Name        : temperature.h
- * Author      : FILL IN
+ * Author      : Gabrielle Lee
  * Description : Class Header File
  */
 
@@ -8,8 +8,12 @@
 #include <sstream>
 using std::string;
 using std::stringstream;
+using std::endl;
 
 // ADD HEADER GUARD HERE
+#ifndef Lee_Temperature_H_
+#define Lee_Temperature_H_
+
 
 
 /*
@@ -19,6 +23,7 @@ using std::stringstream;
  */
 class Temperature {
  public:
+  double internal_tempk;
   /*
    * Constructor #1.
    * Sets kelvin to 0
@@ -111,6 +116,8 @@ class Temperature {
 
  private:
   double kelvin_;
+ 
 };
 
 // REST OF HEADER GUARD GOES HERE
+#endif /* Lee_Temperature_H_ */

@@ -22,9 +22,9 @@ int main() {
   // Set up a string variable to hold the line
   string line;
   // Declare our Input Stream
-  ifstream fin("read.txt");
+  ifstream fin("filename.txt");
   // Declare our Output Stream
-  ofstream fout("append.txt", std::ios::app);
+  ofstream fout("filename.txt", std::ios::app);
   // Make sure both streams connected successfully
   if (fin.fail() || fout.fail()) {
     cerr << "Error opening/creating one of the files.\n";

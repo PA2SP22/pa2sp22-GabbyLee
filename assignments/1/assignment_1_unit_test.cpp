@@ -25,39 +25,46 @@ unsigned int ut_passed = 0, ut_failed = 0, ut_total = 0, num_of_tests = 42;
 std::vector<int> failed_tests;
 
 // Program Execution Starts Here
-bool checkAlphabetic(string const &stringy);
+/*bool checkAlphabetic(string const &stringCA);
 
-bool EncryptString(string &stryng, unsigned int numShift);
+bool EncryptString(string &stringE, unsigned int numShift);
 
-bool DecryptString (string &str, unsigned int numShift);
+bool DecryptString(string &stringDS, unsigned int numShift);
+
+double ComputeAverage(double arr[], unsigned int size);
+
+double FindMinValue(double arr[], unsigned int sizeOfArr);
+
+double FindMaxValue(double arr[],unsigned int sizeOfArr);*/
 
 int main() {
   // Add code to manually test your functions below
 
   // To test your code (Comment Out to Manually Test)
-  UnitTest();
+ UnitTest();
   // This ends program execution
   return 0;
 }
 
+
 // Function Definitions
-bool CheckAlphabetic(string const &stringy){
+bool CheckAlphabetic(string const &stringCA) {
   int i;
   bool isDone;
-  int  size = stringy.length();
+  int signed size = stringCA.length();
   int count = 0;
-  //check for spaces
-  if(stringy == "" || stringy == " " || stringy.empty() == 1 ){
+  // check for spaces
+  if(stringCA == "" || stringCA == " " || stringCA.empty() == 1 ){
     return false;
-  }
-  else{
-  //Loop to check if each character in string is alphabetic 
-    for (i = 0; i < size; i++) {
-    if (isalpha(stringy.at(i)) )
+  } else {
+      
+  //Loop to check if each character in string is alphabetic
+    for ( i = 0; i < size; i++ ) {
+    if (isalpha(stringCA.at(i)))
         count++;
     }
- //returns bool    
-    if (count == size){
+ // returns bool
+    if (count == size) {
         isDone = true;
     } else { isDone = false; }
     return isDone;
@@ -65,107 +72,103 @@ bool CheckAlphabetic(string const &stringy){
 }
 
 
-bool EncryptString(string &str, int numShift){
+bool EncryptString(string &stringE, int numShift) {
     int i;
-    int stringSize = str.length();
+    int signed stringSize = stringE.length();
     bool isAllAlpha;
 
     // use checkAlphabetic function to make sure string is alphabetic
-    isAllAlpha = CheckAlphabetic(str);
-    
-    if (isAllAlpha){
-      
-    
-    // loop to shift letters inthe given string upper and lowercase
- for(i=0; i<stringSize; i++){
-     if (islower(str.at(i))){
-       str.at(i) =( ( (str.at(i)-97+26) + numShift) % 26) + 97;
-       if(str.at(i) > 'z'){
-         str.at(i)-'a';
-       
-       }
-       
-   /*  if (str.at(i) > 'z'){
-       str.at(i) = 'a';
-    }*/
+    isAllAlpha = CheckAlphabetic(stringE);
+
+    if (isAllAlpha) {
+    // loop to shift letters in the given string upper and lowercase
+ for (i = 0; i < stringSize; i++) {
+    if (islower(stringE.at(i))) {
+    stringE.at(i) = (((stringE.at(i)-97+26) + numShift) % 26) + 97;
+    if(stringE.at(i) > 'z') {
+    stringE.at(i) ='a';
+    }
      }
     
-  if (isupper(str.at(i))){
-  str.at(i) =( ( (str.at(i)-65+26) + numShift) % 26) + 65;
-   if(str.at(i) > 'Z'|| str.at(i)<'A'){
-         str.at(i)-'A';
-       
+  if (isupper(stringE.at(i))) {
+  stringE.at(i) =( ( (stringE.at(i)-65+26) + numShift) % 26) + 65;
+   if(stringE.at(i) > 'Z'|| stringE.at(i)<'A') {
+         stringE.at(i)='A';
        }
-    /*if (str.at(i) > 'Z'){
-         ;
-    }
-    */
-  }
-    
+     }
  }
+ // return statments
 return true;
- }
- else {
+ } else {
      return false;
- }
-    
+ 
 }
-bool DecryptString (string &st, int numShift){
+}
+
+bool DecryptString (string &stringDS, int numShift){
       int i;
-    int stringSize = st.length();
+    int signed stringSize = stringDS.length();
     bool isAllAlpha;
     
-    isAllAlpha = CheckAlphabetic(st);
-    
+    // check if string is alphabetic
+    isAllAlpha = CheckAlphabetic(stringDS);
     if (isAllAlpha == true){
-    
- for(i =0; i < stringSize; i++){
-   
-   if (islower(st.at(i))){
-       st.at(i) =( ( (st.at(i)-97) - numShift+26) % 26) + 97;
+        
+        for(i =0; i < stringSize; i++) {
+    // lowercase decryption
+     if (islower(stringDS.at(i))) {
+       stringDS.at(i) =( ( (stringDS.at(i)-97) - numShift+26) % 26) + 97;
    }
-    if (isupper(st.at(i))){
-  st.at(i) =( ( (st.at(i)-65) - numShift+26) % 26) + 65;
-    
+    // uppercase decryption
+    if (isupper(stringDS.at(i))) {
+  stringDS.at(i) =( ( (stringDS.at(i)-65) - numShift+26) % 26) + 65;
  }
- }
+  }
 return true;
- }
- else {
+ } else {
      return false;
  }
-    
 }
-double ComputeAverage(double arr[], unsigned int size){
+
+
+double ComputeAverage(double arr[], unsigned int size) {
     int i;
     double arrayAvg;
     double sum = 0;
+    int signed sizeA = size;
+
     
-    for (i=0; i < size; i++) {
+    for (i = 0; i < sizeA; i++) {
         sum += arr[i];
     }
     arrayAvg = sum/size;
     return arrayAvg;
 }
 
-double FindMinValue(double arr[], unsigned int sizeOfArr){
+double FindMinValue(double arr[], unsigned int sizeOfArr) {
     int i;
     double min = arr[0];
+    int signed sizeB = sizeOfArr;
     
-    for (i=0; i<sizeOfArr; i++){
+    for (i = 0; i < sizeB; i++) {
       if (min > arr[i] ){
         min = arr[i];
       }
-      return min;
+      
 }
+
+return min;
 }
-double FindMaxValue(double arr[],unsigned int sizeOfArr){
+
+double FindMaxValue(double arr[],unsigned int sizeOfArr) {
     int i;
     double max;
     max = arr[0];
+    int signed sizeC = sizeOfArr;
     
-    for (i=0; i<sizeOfArr; i++){
-        if(arr[i]>max){
+    
+    for (i = 0; i < sizeC; i++){
+        if(arr[i] > max){
           max = arr[i];
         }
     }
