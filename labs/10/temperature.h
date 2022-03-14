@@ -15,7 +15,6 @@ using std::endl;
 #define Lee_Temperature_H_
 
 
-
 /*
  * Class Temperature.
  * A class that converts temperatures. It will always internally store the value
@@ -116,8 +115,6 @@ class Temperature {
 
  private:
   double kelvin_;
- 
 };
-
 // REST OF HEADER GUARD GOES HERE
 #endif /* Lee_Temperature_H_ */
