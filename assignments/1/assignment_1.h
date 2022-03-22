@@ -29,4 +29,4 @@ double FindMinValue(double arr[], unsigned int sizeOfArr);
 double FindMaxValue(double arr[], unsigned int sizeOfArr);
 
 
-#endif /* ASSIGNMENT_1_H */
+#endif
