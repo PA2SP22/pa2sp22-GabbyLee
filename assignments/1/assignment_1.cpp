@@ -2,7 +2,8 @@
  * Name        : FILL IN
  * Author      : Gabrielle Lee
  * Description : Assignment 1
- * Sources     : FILL IN
+ * Sources     : https://stackoverflow.com/questions/70113741/caesar-cipher
+          -outputting-characters-with-accents-after-character-goes-6-past-z
  */
 
 #include "assignment_1.h"
@@ -46,18 +47,21 @@ bool EncryptString(string &stringE, int numShift) {
     int signed stringSize = stringE.length();
     bool isAllAlpha;
 
+  if (numShift < 0) {
+      numShift=(26 + (numShift % 26)) % 26;
+    }
+
     // use checkAlphabetic function to make sure string is alphabetic
     isAllAlpha = CheckAlphabetic(stringE);
+
 
     if (isAllAlpha) {
     // loop to shift letters in the given string upper and lowercase
 for (i = 0; i < stringSize; i++) {
 if (islower(stringE.at(i))) {
-stringE.at(i) = (((stringE.at(i)-97+26) + numShift) % 26) + 97;
-if (stringE.at(i) > 'z') {
-    stringE.at(i) ='a';
-    }
-     }
+stringE.at(i) = ( ( (stringE.at(i)-97+26) + numShift) % 26)+97;
+}
+
 
   if (isupper(stringE.at(i))) {
   stringE.at(i) = ( ( (stringE.at(i)-65+26) + numShift) % 26) + 65;
@@ -78,13 +82,17 @@ bool DecryptString(string &stringDS, int numShift) {
     int signed stringSize = stringDS.length();
     bool isAllAlpha;
 
+    if (numShift < 0) {
+      numShift=(26 + (numShift % 26)) % 26;
+    }
+
     // check if string is alphabetic
     isAllAlpha = CheckAlphabetic(stringDS);
     if (isAllAlpha == true) {
         for (i = 0; i < stringSize; i++) {
     // lowercase decryption
      if (islower(stringDS.at(i))) {
-       stringDS.at(i) =( ( (stringDS.at(i)-97) - numShift+26) % 26) + 97;
+       stringDS.at(i) = ( ( (stringDS.at(i) - 97) - numShift+26) % 26) + 97;
 }
 // uppercase decryption
 if (isupper(stringDS.at(i))) {
@@ -137,4 +145,3 @@ double FindMaxValue(double arr[], unsigned int sizeOfArr) {
     }
     return max;
 }
-
