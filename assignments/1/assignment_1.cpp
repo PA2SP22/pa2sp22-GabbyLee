@@ -1,7 +1,7 @@
 /*
- * Name        : FILL IN
+ * Name        : Assignment 1
  * Author      : Gabrielle Lee
- * Description : Assignment 1
+ * Description : Working With functions 
  * Sources     : https://stackoverflow.com/questions/70113741/caesar-cipher
           -outputting-characters-with-accents-after-character-goes-6-past-z
  */
