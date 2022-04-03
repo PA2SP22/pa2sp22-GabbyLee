@@ -98,7 +98,6 @@ int Max(int* the_array, unsigned int array_size) {
   if (the_array == nullptr) {
   throw"NULL ARRAY REFERENCE";
 }
-int i;
 int max = the_array[0];
 
 for (unsigned int i = 0; i < array_size; i++) {
@@ -113,7 +112,7 @@ int Min(int* the_array, unsigned int array_size) {
   if (the_array == nullptr) {
   throw "NULL ARRAY REFERENCE";
 }
-int i;
+
 int min = the_array[0];
 
 for (unsigned int i = 0; i < array_size; i++) {
