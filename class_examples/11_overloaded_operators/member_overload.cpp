@@ -75,10 +75,22 @@ int Cents::cents() const {
   return cents_;
 }
 
+  /*
+   * Mutator
+   * Sets the value of the cents_ member variable
+   * @param int cents - The cents to set
+   */
 void Cents::set_cents(int cents) {
   cents_ = cents;
+  
 }
-
+ /*
+   * Overload of + operator. Adds the cents_ member variable of calling object
+   * and object parameter
+   * @param Cents c2 - The second object
+   * @return Cents - An object where the cents for the calling object and the
+   *                 parameter have been added together.
+   */
 const Cents Cents::operator +(const Cents &c2) const {
   // Use the Cents constructor and operator+(int, int)
   // Notice that we can access the private member variable of c2

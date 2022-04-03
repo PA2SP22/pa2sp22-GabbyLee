@@ -1,11 +1,13 @@
 /*
  * Name        : lab_12.cpp
- * Author      : FILL IN
+ * Author      : Gabrielle Lee
  * Description : Working with Pointers and Dynamic Variables / Arrays
  */
+
 #include <iostream>
 #include <string>
 #include <cstring>
+#include <stdexcept>
 using std::cout;
 using std::endl;
 using std::string;
@@ -15,7 +17,9 @@ using std::string;
  * @param unsigned int size - The desired size of the dynamic array
  * @return int* - A pointer to the newly allocated integer array
  */
+
 int* MakeDynoIntArray(unsigned int size);
+
 
 /*
  * Compute the sum of an array.
@@ -36,6 +40,7 @@ int Sum(int* the_array, unsigned int array_size);
  *        Syntax: throw "The Message to throw";
  */
 int Max(int* the_array, unsigned int array_size);
+
 
 /*
  * Identify the min value in an array.
@@ -66,6 +71,59 @@ int main() {
 }
 
 // CODE HERE -- FUNCTION DEFINITIONS
+int* MakeDynoIntArray(unsigned int size) {
+int * array;
+array = new int[size];
+
+
+return array;
+}
+
+int Sum(int* the_array, unsigned int array_size) {
+if (the_array == nullptr) {
+  throw"NULL ARRAY REFERENCE";
+}
+
+int i;
+int sum = the_array[0];
+int size = array_size;
+
+for (i = 1; i <= size; i++) {
+  sum += the_array[i];
+}
+return sum;
+}
+
+int Max(int* the_array, unsigned int array_size) {
+  if (the_array == nullptr) {
+  throw"NULL ARRAY REFERENCE";
+}
+int i;
+int max = the_array[0];
+
+for (unsigned int i = 0; i < array_size; i++) {
+  if (max < the_array[i]) {
+    max = the_array[i];
+}
+}
+       return max;
+}
+
+int Min(int* the_array, unsigned int array_size) {
+  if (the_array == nullptr) {
+  throw "NULL ARRAY REFERENCE";
+}
+int i;
+int min = the_array[0];
+
+for (unsigned int i = 0; i < array_size; i++) {
+  if (min > the_array[i]) {
+     min = the_array[i];
+  }
+}
+  return min;
+}
+
 
 
 // For testing (DO NOT ALTER)

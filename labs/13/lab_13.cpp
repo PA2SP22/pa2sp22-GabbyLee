@@ -40,6 +40,7 @@ void ClearDynoString(string *&the_string);
 unsigned int CountChars(string* theString, unsigned int &alpha,
                         unsigned int &num);
 
+
 /*
  * Find a word inside of a string.
  * @uses String Member function find()
@@ -77,6 +78,7 @@ std::vector<int> failed_tests;
 
 // Program Execution Starts Here
 int main() {
+  
   // To test your code (DO NOT ALTER)
   UnitTest();
   // This ends program execution
@@ -85,6 +87,65 @@ int main() {
 
 // CODE HERE -- FUNCTION DEFINITION
 
+string* MakeDynoString(string contents) {
+string *pointer1 = new string;
+pointer1 = &contents;
+}
+
+void ClearDynoString(string *&the_string) {
+
+}
+
+/*
+ * Count the number of alphabetic and numeric characters in a string and return
+ * its length.
+ * @uses isdigit() and isalpha()
+ * @param string* the_string - A pointer to the string in which characters will
+ *                             be counted
+ * @param unsigned int &alpha - Contains the count of alphabetic characters in
+ *                              the string on return
+ * @param unsinged int &num - Contains the count of numeric characters in the
+ *                            string on return
+ * @return unsigned int - Contains the length of the_string
+ * @throw The message "NULL STRING REFERENCE" if the_string is NULL
+ */
+
+unsigned int CountChars(string* theString, unsigned int &alpha,
+                        unsigned int &num) {
+unsigned int alpha2 =0;
+unsigned int num2= 0;
+unsigned int size2=0;
+unsigned int size = alpha + num;                        
+ for (unsigned int i = 0;  i<=size; i++){
+    if (theString.at(i).isdigit()){
+      num2++;
+    }
+      if (theString.at(i).isalpha()){
+      alpha2++;
+    }
+      size2++;
+    }
+    
+    return size2;
+ }
+bool FindWord(string *the_string, string the_word);
+
+/*
+ * Replace one word in a string with another word.
+ * @uses String Member Function find()
+ * @uses String Member Function replace()
+ * @param string *the_string -  The string that will have a word replaced
+ * @param string old_word  - The word inside of the_string being replaced
+ * @param string new_word - The word that will be used to replace old_word in
+ *                          the_string
+ * @return bool - True if old_word was found and replaced, else return false
+ * @throw The message "NULL STRING REFERENCE" if the_string is NULL
+ */
+bool ReplaceWord(string* the_string, string old_word, string new_word){
+  
+  
+  
+}
 
 // For testing (DO NOT ALTER)
 void UnitTest() {

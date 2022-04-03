@@ -5,12 +5,7 @@
  *               dynamically create an array to hold student's names.
  */
 
-#include <iostream>
-using std::cout;
-using std::cin;
-using std::endl;
-using std::string;
-
+                             
 // Program starts here
 int main() {
   // Creating a pointer to our array and an integer variable

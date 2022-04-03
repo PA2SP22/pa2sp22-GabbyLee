@@ -120,10 +120,21 @@ const Cents operator -(const Cents &c1, const Cents &c2) {
   return Cents(c1.cents() - c2.cents());
 }
 
+/*
+ * Overload of == operator. Compares the two objects.
+ * @param Cents c1 - The first object
+ * @param Cents c2 - The second object
+ * @return bool - True if the cents are equal, otherwise false
+ */
+ 
 bool operator ==(const Cents &c1, const Cents &c2) {
   return (c1.cents() == c2.cents());
 }
-
+/*
+ * Overload of unary - operator.
+ * @param Cents c - The object to negate
+ * @return Cents - An object where the cents have been negated
+ */
 const Cents operator -(const Cents &c) {
   return (-c.cents());
 }
