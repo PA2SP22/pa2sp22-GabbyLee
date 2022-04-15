@@ -56,4 +56,3 @@ int size = to_scrub.length();
     }
     return to_scrub;
 }
-

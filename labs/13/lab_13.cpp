@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include <cstring>
+#include<cstdlib>
 using std::cout;
 using std::endl;
 using std::string;
@@ -78,7 +79,6 @@ std::vector<int> failed_tests;
 
 // Program Execution Starts Here
 int main() {
-  
   // To test your code (DO NOT ALTER)
   UnitTest();
   // This ends program execution
@@ -88,47 +88,70 @@ int main() {
 // CODE HERE -- FUNCTION DEFINITION
 
 string* MakeDynoString(string contents) {
-string *pointer1 = new string;
-pointer1 = &contents;
+  if ( contents == "" ) {
+    throw "NULL STRING REFERENCE";
 }
-
-void ClearDynoString(string *&the_string) {
-
+string *point1 = new string;
+*point1 = contents;
+return point1;
 }
-
 /*
- * Count the number of alphabetic and numeric characters in a string and return
- * its length.
- * @uses isdigit() and isalpha()
- * @param string* the_string - A pointer to the string in which characters will
- *                             be counted
- * @param unsigned int &alpha - Contains the count of alphabetic characters in
- *                              the string on return
- * @param unsinged int &num - Contains the count of numeric characters in the
- *                            string on return
- * @return unsigned int - Contains the length of the_string
- * @throw The message "NULL STRING REFERENCE" if the_string is NULL
+ * Free the memory associated with a dynamic string and NULL out its pointer.
+ * @param string *& the_string - A pointer (passed by reference) to a dynamic
+ *                               string
  */
+void ClearDynoString(string *&the_string) {
+  if (the_string == nullptr) {
+    throw "NULL STRING REFERENCE";
+  }
+
+  if (the_string == NULL) {
+    throw "NULL STRING REFERENCE";
+}
+the_string = NULL;
+delete the_string;
+}
+
 
 unsigned int CountChars(string* theString, unsigned int &alpha,
                         unsigned int &num) {
-unsigned int alpha2 =0;
-unsigned int num2= 0;
-unsigned int size2=0;
-unsigned int size = alpha + num;                        
- for (unsigned int i = 0;  i<=size; i++){
-    if (theString.at(i).isdigit()){
-      num2++;
-    }
-      if (theString.at(i).isalpha()){
-      alpha2++;
-    }
-      size2++;
-    }
-    
-    return size2;
- }
-bool FindWord(string *the_string, string the_word);
+if (theString == NULL) {
+  throw "NULL STRING REFERENCE";
+}
+
+string str = *theString;
+unsigned int size2 = 0;
+unsigned int size = theString -> length();  
+num = 0;
+alpha = 0;
+for (unsigned int i = 0;  i < size; i++) {
+if (isdigit(theString -> at(i))) {
+num++;
+} else if (isalpha(theString -> at(i))) {
+alpha++;
+}
+size2++;
+}
+return size2;
+}
+ 
+bool FindWord(string *the_string, string the_word) {
+if (the_string == NULL) {
+throw "NULL STRING REFERENCE";
+}
+
+string str = *the_string;
+string word = the_word;
+static const size_t npos = -1;
+bool isDone;
+
+if(str.find(word) != npos){
+  isDone = true;
+} else {
+isDone = false;
+}
+return isDone;
+}
 
 /*
  * Replace one word in a string with another word.
@@ -141,10 +164,30 @@ bool FindWord(string *the_string, string the_word);
  * @return bool - True if old_word was found and replaced, else return false
  * @throw The message "NULL STRING REFERENCE" if the_string is NULL
  */
-bool ReplaceWord(string* the_string, string old_word, string new_word){
+ 
+bool ReplaceWord(string* the_string, string old_word, string new_word) {
+if (the_string==NULL) {
+  throw "NULL STRING REFERENCE";
+}
+int ow_size = old_word.length();
+bool isDone;
+size_t find_word;
+static const size_t npos = -1;
+
+if (the_string -> find(old_word) == npos) {
+  isDone = false;
   
-  
-  
+} else {
+find_word = the_string -> find(old_word);
+*the_string = the_string -> replace(find_word,ow_size,new_word);
+
+ if(the_string -> find(old_word) == npos){
+isDone = true;
+  } else {
+   isDone = false;
+}
+}
+  return isDone;
 }
 
 // For testing (DO NOT ALTER)

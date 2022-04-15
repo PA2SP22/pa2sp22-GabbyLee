@@ -39,7 +39,7 @@ string ToFile();
 string Scrub(string to_scrub);
 
  private:
-string description;
+string description_;
 int priority_;
 bool completed_;
 #endif
