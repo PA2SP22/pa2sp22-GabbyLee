@@ -77,61 +77,57 @@ int main() {
  *               should increment your variable once you enter the outside loop.
  */
 int BubbleSort(int the_array[], unsigned int size) {
-
 unsigned int i, j;
 int pass = 0;
 
-for (i=(size - 1); i>=1; i-- ) {
-pass++;
-for (j=0; j<i; j++) {
-if (the_array[j] > the_array[j + 1]) {
-SwapValues(the_array[j], the_array[j + 1]);
+for (i = (size - 1); i >= 1; i--) {
+  pass++;
 
-}
-
-}
-
-}
+for (j = 0; j < i; j++) {
+  if (the_array[j] > the_array[j + 1]) {
+  SwapValues(the_array[j], the_array[j + 1]);
+  }
+  }
+  }
 return pass;
 }
 
-//Please tell me why number of passes fail
 int OptimizedBubbleSort(int the_array[], unsigned int size) {
 unsigned int i, j;
 int pass = 0;
 bool swapped;
 
-for (i = (size - 1); i>=1; i--) {
+for (i = (size - 1); i >= 1; i--) {
 swapped = false;
 pass++;
-for (j = 0; j<=(i-1); j++) {
-if (the_array[j] > the_array[j + 1]) { 
+
+for (j = 0; j <= (i-1); j++) {
+if (the_array[j] > the_array[j + 1]) {
 SwapValues(the_array[j], the_array[j + 1]);
 swapped = true;
-
+}
+}
 if (swapped == false) {
-break;
-}
-}
-
-
+  break;
 }
 }
 return pass;
 }
 
-int SelectionSort(int the_array[], unsigned int size){
-unsigned int j, pass=0;
+
+
+int SelectionSort(int the_array[], unsigned int size) {
+unsigned int j, pass = 0;
 int small;
 
-for (unsigned int i=0; i<=(size-1); i++) {
+for (unsigned int i = 0; i <= (size-1); i++) {
 small = the_array[i];
 pass++;
-for (j=(i+1); j<=size-1; j++) {
-if(the_array[j]< small) {
+for (j = (i+1); j <= size-1; j++) {
+if(the_array[j] < small) {
 small = the_array[j];
 }
-if (small != the_array[i]) { 
+if (small != the_array[i]) {
 SwapValues(the_array[i], the_array[j]);
 }
 }
