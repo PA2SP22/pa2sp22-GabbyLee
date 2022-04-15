@@ -119,9 +119,8 @@ if (theString == NULL) {
   throw "NULL STRING REFERENCE";
 }
 
-string str = *theString;
 unsigned int size2 = 0;
-unsigned int size = theString -> length();  
+unsigned int size = theString -> length();
 num = 0;
 alpha = 0;
 for (unsigned int i = 0;  i < size; i++) {
@@ -134,19 +133,19 @@ size2++;
 }
 return size2;
 }
- 
+
 bool FindWord(string *the_string, string the_word) {
 if (the_string == NULL) {
 throw "NULL STRING REFERENCE";
 }
 
-string str = *the_string;
-string word = the_word;
+/*string str = *the_string;
+string word = the_word;*/
 static const size_t npos = -1;
 bool isDone;
 
-if(str.find(word) != npos){
-  isDone = true;
+if(the_string->find(the_word) != npos) {
+isDone = true;
 } else {
 isDone = false;
 }
@@ -164,9 +163,9 @@ return isDone;
  * @return bool - True if old_word was found and replaced, else return false
  * @throw The message "NULL STRING REFERENCE" if the_string is NULL
  */
- 
+
 bool ReplaceWord(string* the_string, string old_word, string new_word) {
-if (the_string==NULL) {
+if (the_string == NULL) {
   throw "NULL STRING REFERENCE";
 }
 int ow_size = old_word.length();
@@ -176,18 +175,18 @@ static const size_t npos = -1;
 
 if (the_string -> find(old_word) == npos) {
   isDone = false;
-  
+
 } else {
 find_word = the_string -> find(old_word);
-*the_string = the_string -> replace(find_word,ow_size,new_word);
+*the_string = the_string -> replace(find_word, ow_size, new_word);
 
- if(the_string -> find(old_word) == npos){
-isDone = true;
-  } else {
-   isDone = false;
+if (the_string -> find(old_word) == npos) {
+  isDone = true;
+} else {
+  isDone = false;
 }
 }
-  return isDone;
+return isDone;
 }
 
 // For testing (DO NOT ALTER)
