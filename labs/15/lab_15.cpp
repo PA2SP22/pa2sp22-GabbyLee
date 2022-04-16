@@ -65,13 +65,13 @@ int main() {
 // CODE HERE -- FUNCTION DEFINITION
 
 int InsertionSort(int the_array[], unsigned int size) {
-  unsigned int i, j, pass=0;
+  unsigned int i, j, pass = 0;
 
   for (i = 0; i <= size-1; i++) {
-pass++;
-j = i;
+  pass++;
+  j = i;
 
-  while ((j>0) && (the_array[j] < the_array[j-1])) {
+  while ((j > 0) && (the_array[j] < the_array[j-1])) {
     SwapValues(the_array[j], the_array[j-1]);
     j = j-1;
   }
@@ -79,36 +79,28 @@ j = i;
 return pass;
 }
 
-
 int ShellSort(int the_array[], unsigned int size) {
-unsigned int i, j, gap; 
+unsigned int i, j, gap;
 int temp, pass = 0;
 
-gap = size/2;
+gap = size / 2;
 while (gap > 0) {
   pass++;
+
   for (i = gap; i <= size-1; i++) {
-    temp = the_array[i];
-    j = i;
-/* gap = n / 2
-while gap > 0
-for i = gap to n - 1
-temp = a[i]
-j = i*/
-while ( (j >= gap) && (the_array[j-gap] > temp) ) {
-the_array[j] = the_array[j - gap];
-j = j - gap;
-the_array[j] = temp;
+  temp = the_array[i];
+  j = i;
+
+    while ( (j >= gap) && (the_array[j-gap] > temp) ) {
+    the_array[j] = the_array[j - gap];
+    j = j - gap;
+    the_array[j] = temp;
+    }
+  }
+
 gap = gap/2;
-/*while j >= gap and a[j - gap] > temp
-a[j] = a[j - gap]
-j = j - gap
-a[j] = temp  
-gap = gap / 2*/
 }
-}
-}
-return pass;
+  return pass;
 }
 
 void SwapValues(int &value_1, int &value_2) {
@@ -121,7 +113,6 @@ void SwapValues(int &value_1, int &value_2) {
     temp = value_1;
     value_1 = value_2;
     value_2 = temp;
-
 }
 
 // For testing (DO NOT ALTER)
