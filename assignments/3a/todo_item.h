@@ -34,14 +34,16 @@ string description() const;
 int priority() const;
 
 bool completed() const;
+
 string ToFile();
 
-string Scrub(string to_scrub);
 
  private:
+string Scrub(string to_scrub);
 string description_;
 int priority_;
 bool completed_;
-#endif
 };
+
+#endif
 

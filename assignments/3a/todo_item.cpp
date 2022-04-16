@@ -40,8 +40,10 @@ bool TodoItem::completed() const {
 
 string TodoItem::ToFile() {
 stringstream ss;
-ss << description_ << "@" << priority_ << "@" << completed_;
-string scruby = Scrub(ss.str());
+string description2 = description_;
+description2 = Scrub(description2);
+ss << description2 << "@" << priority_ << "@" << completed_;
+
 return ss.str();
 }
 
