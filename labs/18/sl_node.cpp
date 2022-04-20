@@ -16,6 +16,7 @@ SLNode::SLNode() {
 SLNode::SLNode(int contents) {
 
    contents_ = contents;
+   next_node_ = NULL;
 }
 //empty destructor
 SLNode::~SLNode() {

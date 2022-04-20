@@ -7,39 +7,35 @@
 #include "sl_node.h"
 
 
-//Default constructor
+// Default constructor
 SLNode::SLNode() {
-    next_node_ = NULL; 
+    next_node_ = NULL;
     contents_ = 0;
 }
-// overloaded constuctor
+// Overloaded Constuctor
 SLNode::SLNode(int contents) {
-
-   contents_ = contents;
-   next_node_ = NULL;
+  contents_ = contents;
+  next_node_ = NULL;
 }
-//empty destructor
+// Empty destructor
 SLNode::~SLNode() {
-    
 }
 
-//mutator functions
-void SLNode::set_contents (int contents) {
- contents_ = contents;
-
+// Mutator Functions
+void SLNode::set_contents(int contents) {
+  contents_ = contents;
 }
 
 void SLNode::set_next_node(SLNode* next) {
-    next_node_ = next;
+  next_node_ = next;
 }
 
-//accessor functions 
-int SLNode::contents() const{
-    return contents_;
+// Accessor functions
+int SLNode::contents() const {
+  return contents_;
 }
 
-SLNode* SLNode::next_node() const{
-return next_node_;
-}	
+SLNode* SLNode::next_node() const {
+  return next_node_;
+}
 
-	
