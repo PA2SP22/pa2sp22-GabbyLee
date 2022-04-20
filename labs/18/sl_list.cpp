@@ -1,32 +1,43 @@
-class name: SLList
+#include "sl_list.h"
 
-private data members:
+private:
 
-	head_, SLNode* that points to the first node in a singly-linked list
-	size_, unsigned int the count of the number of nodes in the list
+// function interface:
+public: 
 
-public function interface:
-
-	default constructor, sets values head_(NULL) and size_(0)
-	SLList::SLList(){
-	    
+	//default constructor, sets values head_(NULL) and size_(0)
+	
+	SLList::SLList() {
+	    head_ = NULL;
+	    size_ = 0;
 	}
 	
-	destructor, calls the clear function
+	//destructor, calls the clear function
+	SLList::~SLList{
+		
+	}
 	
-	void InsertHead(int), create a new dynamic SLNode with the contents of 
-						  the parameter and attach as head of list
+	
 	void SLList::InsertHead(int contents){
+         head_ = SLNode(contents);                   //, create a new dynamic SLNode with the contents of 
+	  	                                           //the parameter and attach as head of list
+
+	}
+
+  //remove the head node from the list, or does nothing if
+					   //the list is empty
+	void SLList::RemoveHead() {
+		
+      if head = NULL;) {
+      	break;
+      } else {
+      	head = NULL;
+   
+      }
 	    
 	}
+	// clear the entire contents of the list, freeing all memory associated with all nodes
 	
-	void RemoveHead(), remove the head node from the list, or does nothing if
-					   the list is empty
-	voide SLList::RemoveHead(){
-	    
-	}
-	void Clear(), clear the entire contents of the list, freeing all memory
-	              associated with all nodes
 	void SLList::Clear(){
 	    
 	}
@@ -35,6 +46,9 @@ public function interface:
 	}
 	
 	string ToString() const, 
+	stringstream ss;
+	
+	while head!= NULL;
 	
 	} return a string representation of the contents
 	                          of all nodes in the list, in the format

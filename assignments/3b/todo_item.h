@@ -14,8 +14,8 @@ using std::cout;
 using std::endl;
 
 // HEADER GUARD
-#ifndef Lee_Todo_item_H_
-#define Lee_Todo_item_H_
+#ifndef Lee_Todo_item2_H_
+#define Lee_Todo_item2_H_
 
 class TodoItem {
  public:

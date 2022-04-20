@@ -1,5 +1,9 @@
 #include "todo_item.h"
 
+#ifndef Lee_Todo_item2_CPP_
+#define Lee_Todo_item2_CPP_
+
+
 // Constuctor
 TodoItem::TodoItem(string description, int priority, bool completed) {
     description_= description;
@@ -59,3 +63,4 @@ int size = to_scrub.length();
     return to_scrub;
 }
 
+#endif
