@@ -18,7 +18,7 @@ SLNode::SLNode(int contents) {
   next_node_ = NULL;
 }
 // Empty destructor
-SLNode::~SLNode() {
+SLNode::~SLNode{
 }
 
 // Mutator Functions

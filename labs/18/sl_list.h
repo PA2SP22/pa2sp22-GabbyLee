@@ -4,10 +4,11 @@
  * Description : Lab_18
  */
 #include "sl_node.h"
-#include "sl_node.cpp"
+//#include "sl_node.cpp"
 #include <iostream>
 #include <iterator>
-#include <stringstreams>
+#include <sstream>
+#include <string>
 using std::cout;
 using std::endl;
 using std::string;
@@ -19,27 +20,29 @@ using std::string;
 
 class SLList {
 
-private:
-
-SLList head_,
-unsigned int size_,
-
 public:
 // constructor
-  SLList(head_= NULL, size = 0);
+  SLList();
 
 // destructor
   ~SLList();
 
- void SLList::InsertHead(int contents);
+ void InsertHead(int contents);
 
  void RemoveHead();
  
  void Clear(); 
  
+ void setsize();
+ 
  unsigned int size() const;
 	
  string ToString() const;
+ 
+ private:
+ 
+SLNode* head_;
+unsigned int size_;
 
-} 
+};
 #endif
