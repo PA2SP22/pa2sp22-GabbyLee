@@ -9,14 +9,14 @@
 
 
 void TodoList::IncreaseSize(){
-  unsigned int i, size, nsize;
+  unsigned int i, size, new_size;
   size =GetCapacity();
-  nsize = size + 10;
-  TodoItem** tempA = new TodoItem*[size];
+  new_size = size + 10;
+  TodoItem** tempArr = new TodoItem*[size];
   
   // Duplicting Array...
   for (i=0; i<size; i++) {
-    tempA[i] = items_array[i];
+    tempArr[i] = items_array[i];
   } 
   // deleting array...
   delete items_array;

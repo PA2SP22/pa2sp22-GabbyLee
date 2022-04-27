@@ -18,62 +18,57 @@ void SLList::InsertHead(int contents){
 // If list is empty
    if (head_ == NULL) {
     head_ = new SLNode(contents);
-    } else  {
-// If list has multiple items and size is lower than 500
-   if(size_ > 499) {
-    cout<< "HIGH LOAD"<<endl;
-  } else {
-  SLNode* temp = new SLNode(contents);
-  temp->set_next_node(head_);
-  head_ = temp;
-    size_++;
- 
+    size_ = size_ + 1;
+    } else {
+  SLNode* new_node = new SLNode(contents);
+  new_node->set_next_node(head_);
+  head_ = new_node;
+    size_ =size_ + 1;
     }
   }
-}
+
 
 // Remove head
 void SLList::RemoveHead() {
   if (head_ == NULL) {
+   size_ = 0; 
   }
   // If only one element in list
   else if (head_ != NULL && head_->next_node() == NULL) {
-    delete(head_);
+    delete head_;
+    size_ -=1;
 
   // If there are multiple elements in list 
-  } else if (head_ != NULL && head_->next_node() != NULL) {
+  } else {
     SLNode* temp = head_;
     head_ = head_->next_node();
-    delete(temp);
+    delete temp;
+    size_ = size_ - 1;
     }
 }
+
+
 // Clear the entire list
 void SLList::Clear() {
   // if the list is empty;
-  if (head_ == NULL){
+  if (head_ == NULL) {
+    size_ = 0;
     }
-  // cout << "The list is empty";
- // If there is only one element in the list
- /* } else if (head->next_node() == NULL) { 
-    head_->set_contents(0);
-    delete head;
-*/// If there is just one items in list
-  else if (head_->next_node() == NULL){
-    delete head_;
-    head_ = NULL;
+
+  else if (head_!= NULL && head_->next_node() == NULL){
+   delete head_;
+    size_ -=1;
     
   } else {
-    SLNode *temp, *nxt;
-    temp = head_;
-    nxt = head_->next_node();
-    while (temp != NULL){
+    while (head_ != NULL) {
+      SLNode* temp = head_;
+      head_ = head_->next_node();
       delete temp;
-      temp = nxt->next_node();
-      nxt = temp->next_node();
+      size_-=1;
     }
- // delete(previous_node);
   }
 } 
+
 unsigned int SLList::size() const {
   return size_;
 }
@@ -81,24 +76,29 @@ unsigned int SLList::size() const {
 string SLList::ToString() const {
 	std::stringstream ss;
   string str;
+  unsigned int size = size_;
   
+  if (size_>= 500 && size_< 1000){
+       ss<< "High Load / 2";
+       size = size_/2;
+     } else {
+       size = size_;
+     }
   
-  if (head_ == NULL) {
-    ss<<"aa  ";
-  }
-  if (head_ != NULL) {
   SLNode* current_node = head_; 
-		while(current_node != NULL) {
+  
+		for(unsigned int i = 0; i<size; i++) {
+		  if (current_node == NULL ){
+		    ss<<"";
+		  }
+		  if (i == (size - 1) ) {
+		    ss << current_node->contents();
+		} else {
      ss << current_node->contents() << ", ";
-		 }
+     current_node = current_node->next_node();
+		}
 	}
-  str = ss.str();
-  //  unsigned sz = str.size();
 
- 
+ str = ss.str();
 	return str;
 } 
-/*return a string representation of the contents
-	                          of all nodes in the list, in the format
-	                          NUM1, NUM2 , ..., LASTNUM
-							  return empty string on empty list*/
