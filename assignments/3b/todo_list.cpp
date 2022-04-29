@@ -9,63 +9,62 @@
 
 
 void TodoList::IncreaseSize(){
-  unsigned int i, size, new_size;
-  size =GetCapacity();
-  new_size = size + 10;
+  unsigned int i, size;
+  size = GetCapacity();
+  max_capacity = max_capacity + 10;
   TodoItem** tempArr = new TodoItem*[size];
   
   // Duplicting Array...
-  for (i=0; i<size; i++) {
+  for (i = 0; i < size; i++) {
     tempArr[i] = items_array[i];
   } 
   // deleting array...
-  delete items_array;
+  delete[] items_array;
+  items_array = NULL;
 
   //creating and filling new bigger array...
-  items_array = new TodoItem*[nsize];
+  items_array = new TodoItem*[max_capacity];
   for (i=0; i<size; i++) {
-    items_array[i] = tempA[i];
+    items_array[i] = tempArr[i];
   } 
 
-  delete[] tempA;
-  tempA = NULL;
+  delete[] tempArr;
 }
 
 // Private Member Funtion 2: Compacting Size
-void TodoList::CompactSize() {
-  unsigned int i, nsize, size, null_items=0;
-  size = GetCapacity();
+void TodoList::CompactSize(int to_delete) {
+  unsigned int del = (to_delete-1), size, i;
+  size = GetSize();
   
-  
-  for (i=0; i<size; i++) {
-    if (items_array[i] == NULL) {
-      null_items++;
-    }
-  }
-  
-  nsize = size-null_items;
   TodoItem** tempA = new TodoItem*[size];
-  for (i=0; i<size; i++) {
-   if (items_array[i] != NULL) {
+  
+  for (i = 0; i < size-1; i++) {
+   if (i == del ) {
+     tempA[i] = items_array[i+1];
+   } else {
      tempA[i] = items_array[i];
     }
   }
-  delete items_array;
+  
+  delete[] items_array;
+  items_array = NULL;
     
    // Creating and filling new smaller array...
-  items_array = new TodoItem*[nsize];
-
-  for (i=0; i<nsize; i++) {
-    items_array[i] = tempA[i];
+  items_array = new TodoItem*[max_capacity];
+  for (i = 0; i < size-1; i++) {
+    if(tempA[i] != NULL) {
+     items_array[i] = tempA[i];
+    }
   } 
-
+  
   delete[] tempA;
-  tempA = NULL;
-} 
+}
 
  //Constructor
 TodoList::TodoList(){
   items_array = new TodoItem*[25];
+  max_capacity = 25;
+  current_size = 0;
   }
 
 
@@ -80,28 +79,39 @@ items_array = NULL;
 void TodoList::AddItem(TodoItem* item) {
 
   unsigned int  cSize = GetSize();
- if(cSize < 24){
+ if(cSize <= max_capacity) {
    items_array[cSize] = item;
  } 
- if(current_size >= 24){
+ else {
   IncreaseSize();
   cSize = GetSize();
-  items_array[cSize] = item;
+  items_array[cSize-1] = item;
  }
+ 
 }
   
   
 // Member Function 2: Deleting Item
 void TodoList::DeleteItem(int to_delete) {
- items_array[(to_delete-1)] = NULL;
- CompactSize();
+  int size = GetSize(); 
+if (to_delete <= 0 || to_delete > size){
+
+} else {
+ CompactSize(to_delete);
 } 
+
+}
 
 // Member Function 3: Retiveing Item
 TodoItem* TodoList::GetItem(int locate) {
+  int size = GetSize();
   TodoItem* to_return;
   
-  if(items_array[(locate-1)] == NULL){
+  if (locate < 0 || locate > size){
+    to_return = 0; 
+  }
+  
+  else if(items_array[(locate-1)] == NULL){
    to_return = 0;
   } else {
   to_return = items_array[(locate-1)];
@@ -124,7 +134,6 @@ unsigned int TodoList::GetSize() {
 
 // Member Function 5: Retrieve Capacity
 unsigned int TodoList::GetCapacity() {
- max_capacity = 25;
  return max_capacity;
 }
  
@@ -152,20 +161,23 @@ SwapValues(items_array[i]->priority(), items_array[j]->priority());
 
 //Member Function 7:  ToFile.
 string TodoList::ToFile(){
-  stringstream ss ;
+  stringstream ss;
+  string stringF;
   unsigned int i, size;
-  size = GetCapacity();
+  size = GetSize();
   
-  for (i =0; i<size; i++){
-    ss<<items_array[i]->ToFile()<<endl;
+  for (i = 0; i< size; i++){
+    ss << items_array[i]->ToFile() << endl;
   }
- return ss.str(); 
+  stringF = ss.str();
+ return stringF; 
 }
   
 // Overloaded Friend 
 ostream& operator <<(ostream &out, TodoList &list) {
   unsigned int i, size;
-  size = GetSize();
+  
+  size = list.GetSize();
   
   for (i=0; i<size; i++) {
       out<< i << ":" << list.GetItem((i+1))->description();

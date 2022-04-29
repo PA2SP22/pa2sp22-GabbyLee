@@ -23,7 +23,7 @@ void SLList::InsertHead(int contents){
   SLNode* new_node = new SLNode(contents);
   new_node->set_next_node(head_);
   head_ = new_node;
-    size_ =size_ + 1;
+    size_ = size_ + 1;
     }
   }
 
@@ -36,6 +36,7 @@ void SLList::RemoveHead() {
   // If only one element in list
   else if (head_ != NULL && head_->next_node() == NULL) {
     delete head_;
+    head_ = NULL;
     size_ -=1;
 
   // If there are multiple elements in list 
@@ -57,6 +58,7 @@ void SLList::Clear() {
 
   else if (head_!= NULL && head_->next_node() == NULL){
    delete head_;
+   head_ = NULL;
     size_ -=1;
     
   } else {
@@ -78,12 +80,12 @@ string SLList::ToString() const {
   string str;
   unsigned int size = size_;
   
-  if (size_>= 500 && size_< 1000){
+ /* if (size_>= 500 && size_< 1000){
        ss<< "High Load / 2";
        size = size_/2;
      } else {
-       size = size_;
-     }
+       size = size_;*/
+  
   
   SLNode* current_node = head_; 
   

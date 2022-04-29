@@ -31,9 +31,9 @@ unsigned int max_capacity;
 void IncreaseSize();
 
 //Private Member Function 2: Compacting size
-void CompactSize();
+void CompactSize(int to_delete);
 
-   
+
  public:
 TodoList();
 
