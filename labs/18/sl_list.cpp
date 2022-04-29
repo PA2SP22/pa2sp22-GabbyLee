@@ -37,6 +37,8 @@ void SLList::RemoveHead() {
   else if (head_ != NULL && head_->next_node() == NULL) {
     delete head_;
     size_ -=1;
+    // Luke: You also need to set head_ back to NULL
+    head_ = NULL;
 
   // If there are multiple elements in list 
   } else {
@@ -58,6 +60,8 @@ void SLList::Clear() {
   else if (head_!= NULL && head_->next_node() == NULL){
    delete head_;
     size_ -=1;
+    // Luke: You also need to set head_ back to NULL
+    head_ = NULL;
     
   } else {
     while (head_ != NULL) {
@@ -77,14 +81,15 @@ string SLList::ToString() const {
 	std::stringstream ss;
   string str;
   unsigned int size = size_;
-  
+  // Luke: This part isn't needed
+  /*
   if (size_>= 500 && size_< 1000){
        ss<< "High Load / 2";
        size = size_/2;
      } else {
        size = size_;
      }
-  
+  */
   SLNode* current_node = head_; 
   
 		for(unsigned int i = 0; i<size; i++) {
