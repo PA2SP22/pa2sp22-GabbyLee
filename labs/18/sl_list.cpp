@@ -36,6 +36,8 @@ void SLList::RemoveHead() {
     delete head_;
     head_ = NULL;
     size_ -=1;
+    // Luke: You also need to set head_ back to NULL
+    head_ = NULL;
 
   // If there are multiple elements in list
   } else {
@@ -53,11 +55,20 @@ void SLList::Clear() {
   if (head_ == NULL) {
     size_ = 0;
 
+<<<<<<< HEAD
     } else if (head_!= NULL && head_->next_node() == NULL) {
   delete head_;
   head_ = NULL;
   size_ -=1;
 
+=======
+  else if (head_!= NULL && head_->next_node() == NULL){
+   delete head_;
+    size_ -=1;
+    // Luke: You also need to set head_ back to NULL
+    head_ = NULL;
+    
+>>>>>>> 05d72c9be38c8b7cf823664ffc01dbd7d26727dc
   } else {
     while (head_ != NULL) {
       SLNode* temp = head_;
@@ -73,9 +84,37 @@ unsigned int SLList::size() const {
 }
 // ToString to print list
 string SLList::ToString() const {
+<<<<<<< HEAD
 std::stringstream ss;
 string str;
 unsigned int size = size_;
+=======
+	std::stringstream ss;
+  string str;
+  unsigned int size = size_;
+  // Luke: This part isn't needed
+  /*
+  if (size_>= 500 && size_< 1000){
+       ss<< "High Load / 2";
+       size = size_/2;
+     } else {
+       size = size_;
+     }
+  */
+  SLNode* current_node = head_; 
+  
+		for(unsigned int i = 0; i<size; i++) {
+		  if (current_node == NULL ){
+		    ss<<"";
+		  }
+		  if (i == (size - 1) ) {
+		    ss << current_node->contents();
+		} else {
+     ss << current_node->contents() << ", ";
+     current_node = current_node->next_node();
+		}
+	}
+>>>>>>> 05d72c9be38c8b7cf823664ffc01dbd7d26727dc
 
   SLNode* current_node = head_;
 
