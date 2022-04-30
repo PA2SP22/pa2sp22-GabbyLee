@@ -13,7 +13,6 @@
 
 // ADD HEADER GUARD HERE
 class SLNode {
-
  public:
 // Default constructor
 SLNode();
@@ -37,6 +36,5 @@ SLNode* next_node() const;
  private:
 SLNode* next_node_;
 int contents_;
-
 };
 #endif

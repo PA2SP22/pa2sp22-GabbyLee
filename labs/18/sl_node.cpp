@@ -8,7 +8,7 @@
 
 
 // Default constructor
-SLNode::SLNode(){
+SLNode::SLNode() {
     next_node_ = NULL;
     contents_ = 0;
 }
@@ -19,7 +19,6 @@ SLNode::SLNode(int contents) {
 }
 // Empty destructor
 SLNode::~SLNode() {
-
 }
 
 // Mutator Functions
