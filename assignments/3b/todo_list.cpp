@@ -29,6 +29,7 @@ void TodoList::IncreaseSize(){
   } 
 
   delete[] tempArr;
+  tempArr = NULL;
 }
 
 // Private Member Funtion 2: Compacting Size
@@ -36,14 +37,14 @@ void TodoList::CompactSize(int to_delete) {
   unsigned int del = (to_delete-1), size, i;
   size = GetSize();
   
-  TodoItem** tempA = new TodoItem*[size];
+   for (i = del; i < size-1; i++) {
+     items_array[i] = items_array[i +1];
+  }
   
-  for (i = 0; i < size-1; i++) {
-   if (i == del ) {
-     tempA[i] = items_array[i+1];
-   } else {
-     tempA[i] = items_array[i];
-    }
+  /*TodoItem** tempA = new TodoItem*[size];
+  
+  for (i = 0; i < size; i++) {
+   if ( items_array[i] != NULL){
   }
   
   delete[] items_array;
@@ -58,6 +59,8 @@ void TodoList::CompactSize(int to_delete) {
   } 
   
   delete[] tempA;
+  tempA = NULL;
+*/
 }
 
  //Constructor
@@ -85,7 +88,7 @@ void TodoList::AddItem(TodoItem* item) {
  else {
   IncreaseSize();
   cSize = GetSize();
-  items_array[cSize-1] = item;
+  items_array[cSize + 1] = item;
  }
  
 }
@@ -178,9 +181,8 @@ ostream& operator <<(ostream &out, TodoList &list) {
   unsigned int i, size;
   
   size = list.GetSize();
-  
-  for (i=0; i<size; i++) {
-      out<< i << ":" << list.GetItem((i+1))->description();
+  for (i = 0; i < size; i++) {
+      out << list.GetItem((i+1))->description();
 }
 return out;
   }
