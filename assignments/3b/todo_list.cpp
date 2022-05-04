@@ -84,6 +84,8 @@ void TodoList::AddItem(TodoItem* item) {
   unsigned int  cSize = GetSize();
  if(cSize <= max_capacity) {
    items_array[cSize] = item;
+   // Luke: Increment Size here
+   current_size++;
  } 
  else {
   IncreaseSize();
@@ -100,7 +102,11 @@ void TodoList::DeleteItem(int to_delete) {
 if (to_delete <= 0 || to_delete > size){
 
 } else {
+  // Luke: Before you compact, you need to delete the actual TodoItem
+  delete items_array[to_delete - 1];
  CompactSize(to_delete);
+  // Luke: After compaction, since we removed an Item we need to decrease size
+  current_size--;
 } 
 
 }
@@ -125,6 +131,9 @@ TodoItem* TodoList::GetItem(int locate) {
  
 // Member Function 4: Retriving current size;
 unsigned int TodoList::GetSize() {
+  // Luke: Your current_size variable should be tracking the size
+  // Luke: So we just return the size
+  /*
   unsigned int i, cSize = GetCapacity();
   current_size = 0;
  for (i=0; i<cSize; i++){
@@ -132,6 +141,7 @@ unsigned int TodoList::GetSize() {
       current_size++;
     }
   }
+  */
   return current_size;
 }
 
