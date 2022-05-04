@@ -5,6 +5,7 @@
 // Default constructor, sets values head_(NULL) and size_(0)
 SLList::SLList() {
   head_ = NULL;
+  tail_ = NULL;
   size_ = 0;
 }
 
@@ -26,20 +27,16 @@ void SLList::InsertHead(int contents) {
   head_ = new_node;
   size_ = size_ + 1;
     }
-
   }
-  
-  
+
 void SLList::InsertTail(int contents) {
-if (head_ == NULL && tail_ == NULL) {
- head_ = new SLNode(contents);
- tail_ = head_;
- size_ = size_ + 1;
- 
+if (head_ == NULL) {
+head_ = new SLNode(contents);
+tail_ = head_;
+size_ = size_ + 1;
 }  else {
     SLNode* new_node = new SLNode(contents);
-    SLNode* temp = tail_; 
-    temp->set_next_node(new_node);
+    tail_->set_next_node(new_node);
     tail_ = new_node;
     size_ = size_ + 1;
     }
@@ -49,13 +46,14 @@ if (head_ == NULL && tail_ == NULL) {
 void SLList::RemoveHead() {
   if (head_ == NULL) {
   size_ = 0;
-//If the is only one element in the list
+// If the is only one element in the list
   } else if (head_ != NULL && head_->next_node() == NULL) {
     delete head_;
     head_ = NULL;
+    tail_= NULL;
     size_ -=1;
 
-  // If there are multiple elements in list
+// If there are multiple elements in list
   } else {
     SLNode* temp = head_;
     head_ = head_-> next_node();
@@ -66,28 +64,19 @@ void SLList::RemoveHead() {
 }
 
 void SLList::RemoveTail() {
-  
     if (head_ == NULL) {
   size_ = 0;
-  
-
   } else if (head_!= NULL && head_->next_node() == NULL) {
-    delete head_;
-    head_ = NULL;
-    size_ = size_-1;
-    
-    
+  RemoveHead();
   } else {
      SLNode* temp = head_;
      SLNode* prev;
-     
-     while(temp->next_node()!= NULL){
-     prev = temp;
-     temp = temp->next_node();
-     }
-     prev->set_next_node(NULL);
-     delete temp;
-     tail_ = prev;
+
+  while (temp != tail_) {
+    prev = temp;
+    temp = temp->next_node();
+  }
+    tail_ = prev;
   }
 }
 
@@ -95,27 +84,25 @@ void SLList::RemoveTail() {
 
 int SLList::GetHead() const {
   int to_return;
-  
-  if (head_ == NULL) { 
-  to_return = 0; 
-  } else { 
+
+  if (head_ == NULL) {
+  to_return = 0;
+  } else {
     to_return = head_->contents();
   }
-  
+
   return to_return;
-  
 }
 
 
 int SLList::GetTail() const {
- int to_return;
-if (head_ == NULL){
-  to_return = 0; 
+int to_return;
+if (head_ == NULL) {
+to_return = 0;
 } else {
-  to_return = tail_->contents();
-} 
+to_return = tail_->contents();
+}
 return to_return;
-  
 }
 
 
@@ -124,12 +111,13 @@ void SLList::Clear() {
   // if the list is empty;
   if (head_ == NULL) {
     size_ = 0;
-    
+
   } else if (head_!= NULL && head_->next_node() == NULL) {
   delete head_;
   head_ = NULL;
+  tail_ = NULL;
   size_ -=1;
-    
+
   } else {
     while (head_ != NULL) {
       SLNode* temp = head_;
@@ -137,9 +125,10 @@ void SLList::Clear() {
       delete temp;
       size_-=1;
     }
+    head_ = NULL;
+    tail_= NULL;
   }
 }
-  
 
 unsigned int SLList::size() const {
   return size_;
@@ -150,8 +139,8 @@ std::stringstream ss;
 string str;
 unsigned int size = size_;
 
-if (size == 0){
-  ss<<"";
+if (size == 0) {
+  ss << "";
 } else {
   SLNode* current_node = head_;
 
