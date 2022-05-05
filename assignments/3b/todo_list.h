@@ -14,23 +14,21 @@ using std::ostream;
 using std::cout;
 using std::endl;
 #include "todo_item.h"
-//#include "todo_item.cpp"
 
 // HEADER GUARD
 #ifndef Lee_Todo_list_H_
 #define Lee_Todo_list_H_
 
 class TodoList {
- 
-private:
+ private:
 TodoItem** items_array;
 unsigned int current_size;
 unsigned int max_capacity;
 
-//Private Member fucntion 1: Increasing size
+// Private Member fucntion 1: Increasing size
 void IncreaseSize();
 
-//Private Member Function 2: Compacting size
+// Private Member Function 2: Compacting size
 void CompactSize(int to_delete);
 
 
@@ -39,35 +37,31 @@ TodoList();
 
 ~TodoList();
 
-//Member function 1
+// Member function 1
 void AddItem(TodoItem* item);
 
-//Member function 2 
+// Member function 2
 void DeleteItem(int to_delete);
 
-
-//member function 3
+// member function 3
 TodoItem* GetItem(int locate);
 
- 
-//Member Function 4:
+// Member Function 4:
 unsigned int GetSize();
 
-
-//member function 5:
+// member function 5:
 unsigned int GetCapacity();
 
-//member function 6:
+// member function 6:
 void Sort();
 
-
-//member function 7
+// member function 7
 string ToFile();
 
-//Overloaded Friend
+// Overloaded Friend
 friend ostream& operator <<(ostream &out, TodoList &list);
 
-void SwapValues(int value_1, int value_2);
+// Swap Method
+void SwapValues(TodoItem*& value_1, TodoItem*& value_2);
 };
-
 #endif

@@ -41,6 +41,14 @@ size_ = size_ + 1;
     size_ = size_ + 1;
     }
 }
+void Insert(int contents) {
+  
+}
+
+
+bool RemoveFirstOccurence {
+  
+}
 
 // Remove head
 void SLList::RemoveHead() {

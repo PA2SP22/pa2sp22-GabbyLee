@@ -31,6 +31,8 @@ void InsertTail(int contents);
 
 void Insert(int contents);
 
+bool RemoveFirstOccurence(int to_remove);
+
 void RemoveHead();
 
 void RemoveTail();
