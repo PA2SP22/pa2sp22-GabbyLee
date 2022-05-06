@@ -76,7 +76,11 @@ void SLList::RemoveTail() {
     prev = temp;
     temp = temp->next_node();
   }
+    // Luke: Need to update everything
     tail_ = prev;
+    delete temp;
+    tail_->set_next_node(NULL);
+    size_--;
   }
 }
 
