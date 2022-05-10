@@ -60,8 +60,5 @@ string ToFile();
 
 // Overloaded Friend
 friend ostream& operator <<(ostream &out, TodoList &list);
-
-// Swap Method
-void SwapValues(TodoItem*& value_1, TodoItem*& value_2);
 };
 #endif

@@ -1,6 +1,11 @@
+/*
+ * Name        : Assignment 3b/todo_item.cpp
+ * Author      : Gabrielle Lee
+ * Description : Assignment 3b
+ */
 #include "todo_item.h"
 
-#ifndef Lee_Todo_item2_CPP_
+#ifndef Lee_Todo_item2_3b_CPP_
 #define Lee_Todo_item2_CPP_
 
 

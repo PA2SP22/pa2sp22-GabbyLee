@@ -1,5 +1,5 @@
 /*
- * Name        : lab_13.cpp
+ * Name        : Assignment_3.cpp
  * Author      : Gabrielle Lee
  * Description : Assignment 3a
  */
