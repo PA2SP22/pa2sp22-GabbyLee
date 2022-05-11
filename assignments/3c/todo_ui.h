@@ -20,36 +20,33 @@ using std::endl;
 #define Lee_Todo_UI_H_
 
 class TodoUI {
-
-private:
-CinReader* read;
+ private:
+CinReader read;
 TodoList* list;
 
-public:
-// Constructor 
+ public:
+// Constructor
 TodoUI();
 
-// Destructor 
+// Destructor
 ~TodoUI();
 
-//Member functions:
-void Menu(int user_num);
+// Member functions:
+void Menu();
 
-void Create(string item);
+void Create();
 
 void Edit();
 
-string ViewALL();
+void ViewALL();
 
-string ViewItem(int to_get);
+string ViewItem();
 
 void Delete(int to_del);
 
 void DeleteAll();
 
 void Exit();
-
-
-
 };
-# endif 
+
+# endif
