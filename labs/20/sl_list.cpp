@@ -41,14 +41,33 @@ size_ = size_ + 1;
     size_ = size_ + 1;
     }
 }
-void Insert(int contents) {
-  
+/*void Insert(int contents) {
+ while(temp != tail_){
+   if()
+ }
 }
 
 
-bool RemoveFirstOccurence {
-  
+bool RemoveFirstOccurence() {
+int count;
+bool isDone = false;
+  if (size_== 0) {
+  } else {
+  SLNode* temp = head_->contents();
+   while(temp != to_remove) {
+   temp = temp->next_node()->contents;
+   if( temp == to_remove){
+     delete temp;
+     temp = temp->next_node();
+     isDone = true;
+   } else {
+     isDone = false;
+   }
+
+ }
+ 
 }
+}/*
 
 // Remove head
 void SLList::RemoveHead() {
