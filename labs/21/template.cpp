@@ -84,7 +84,8 @@ template <typename T>
 T ValueAt(T values[], unsigned int size, unsigned int index, bool &error) {
   T to_return;
   
-  bool has_v1 = HasValue(values[], size, index);
+  // Luke: When we pass in an array as an argument we don't use the []
+  bool has_v1 = HasValue(values, size, values[index]);
   
   if (has_v1 == false) {
     error = true;
@@ -131,10 +132,11 @@ T Sum(T values[], unsigned int size) {
  */
  template <typename T>
  bool SwapValues(T values[], unsigned int size, unsigned int index1, unsigned int index2) {
-   unsigned int i;
+   // unsigned int i;
    T temp;
-   T v1 = index1; 
-   T v2= index2;
+   // Luke: Need to use the array here
+   T v1 = values[index1]; 
+   T v2= values[index2];
    
    bool isDone; 
    // pass each value to has value to error check
