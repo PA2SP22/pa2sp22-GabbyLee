@@ -1,14 +1,21 @@
 #include <iostream>
+#include <string>
+#include <sstream>
+using std::cout;
+using std::endl;
+using std::string;
+using std::stringstream;
 
 #ifndef Lee_BST_Node_H_
 #define Lee_BST_Node_H_
 
-class BSTNode {
- private:
-BSTNode* leftChild;
+
+template<typename t>
+class BSTNodeT {
+private:
+BSTNodeT* leftChild;
 BSTNode* rightChild;
 int contents;
- 
  public:
  
 BSTNode();

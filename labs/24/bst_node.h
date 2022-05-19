@@ -1,4 +1,6 @@
 #include <iostream>
+using std::endl;
+
 
 #ifndef Lee_BST_Node_H_
 #define Lee_BST_Node_H_
