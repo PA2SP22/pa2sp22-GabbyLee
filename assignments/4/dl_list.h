@@ -5,6 +5,7 @@
  */
 
 #include <iostream>
+#include <ostream>
 #include <string>
 #include <sstream>
 #include "dl_node.h"
@@ -12,6 +13,7 @@ using std::cout;
 using std::endl;
 using std::string;
 using std::stringstream;
+using std::cerr;
 
 #ifndef Lee_DLList_H_
 #define Lee_DLList_H_
