@@ -12,6 +12,13 @@ using std::ostream;
 using std::vector;
 using std::stringstream;
 using std::sort;
+*/.begin() .end()
+for (it = v.begin(); it != v.end(); it++)
+for (i =0; i<v.size; i++)
+v.erace
+v.pushback
+vector<int>
+*/
 
 struct Item {
   Item(string name = "noname", unsigned int value = 0,

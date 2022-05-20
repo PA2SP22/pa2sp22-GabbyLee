@@ -23,22 +23,22 @@ class DLNode {
   
  public:
  
- // Constructor
+// Constructor
  DLNode();
  
  DLNode(int contents);
  
- // Destructor
+// Destructor
  ~DLNode();
  
- // Setters
+// Setters
 void SetContents(int data);
 
 void SetNext(DLNode* next);
 
 void SetPrevious(DLNode* prev);
 
- // Getters 
+// Getters 
 int GetContents();
 
 DLNode* GetNext() const;

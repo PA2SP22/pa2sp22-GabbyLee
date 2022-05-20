@@ -4,6 +4,7 @@
  * Description : Various functions using templates. Please note you can just
  *               write the definitions in here. No need for prototypes.
  */
+#include <iostream>
 #include <string>
 #include <sstream>
 using std::string;
@@ -24,21 +25,27 @@ using std::stringstream;
  * @return string - A string containing the contents of values separated by the
  *                  specified separator character
  */
- template <typename T>
- string PrepareForDisplay(T values[], unsigned int size, char sep =','){
-   stringstream ss;
-   unsigned int i;
-   
-   for(i=0; i<size; i++) {
-     ss<<values[i]<<sep; 
-     
-     if (i == size-1){
-       ss<<values[i];
-     }
- }
-  return ss.str();
- }
- 
+template <typename T>
+string PrepareForDisplay(T values[], unsigned int size, char sep =',') {
+stringstream ss;
+unsigned int i;
+ss.setf(std::ios::fixed|std::ios::showpoint);
+ss.precision(2);
+
+if (size == 0) {
+ss << "";
+} else {
+for(i = 0; i < size; i++) {
+  if (i == size - 1) {
+  ss << values[i];
+} else {
+  ss << values[i] << sep;
+}
+}
+}
+return ss.str();
+}
+
 
 /*
  * Function Name: HasValue
@@ -49,23 +56,27 @@ using std::stringstream;
  * @return bool - true if value is found in the array, otherwise false
  */
 template <typename T>
-bool HasValue(T values[], unsigned int size, T value_to_find ){
+bool HasValue(T values[], unsigned int size, T value_to_find ) {
   unsigned int i, count;
   bool isFound;
   count = 0;
-    for (i = 0; i < size; i++) {
-     if(values[i] == value_to_find) {
-        count++;
-     }
-    }
-  if (count >= 1) {
-      isFound = true;
-  } else { 
-      isFound = false;
-    }
- return isFound;
-}
 
+if (size == 0 || value_to_find == T()) {
+isFound = false;
+} else {
+for (i = 0; i < size; i++) {
+if(values[i] == value_to_find) {
+count++;
+}
+}
+if (count >= 1) {
+  isFound = true;
+} else {
+isFound = false;
+}
+}
+return isFound;
+}
 /*
  * Function Name: ValueAt
  * Return the value from an array at a specified index.
@@ -80,22 +91,24 @@ bool HasValue(T values[], unsigned int size, T value_to_find ){
  *               the type and sets error to true. To get a zero representation
  *               you can return T()
  */
+
 template <typename T>
 T ValueAt(T values[], unsigned int size, unsigned int index, bool &error) {
-  T to_return;
-  
-  bool has_v1 = HasValue(values[], size, index);
-  
-  if (has_v1 == false) {
-    error = true;
-    to_return = T();
-    
+T to_return;
+
+if (values[index] == T() || size < index || error == true) {
+to_return = T();
+} else {
+bool has_v1 = HasValue(values, size, values[index]);
+if (has_v1 == false) {
+  error = true;
+  to_return = T();
   } else {
   to_return = values[index];
-   error = false;
+  error = false;
   }
-  
-  return to_return;
+}
+return to_return;
 }
 
 /*
@@ -106,17 +119,21 @@ T ValueAt(T values[], unsigned int size, unsigned int index, bool &error) {
  * @param unsigned int size - The size of the array
  * @return T - The sum of the values in the array
  */
- template <typename T>
+
+template <typename T>
 T Sum(T values[], unsigned int size) {
-  unsigned int i;
-  T sum;
-  sum = values[0];
-  
-  for (i = 0; i< size; i++) {
-  sum += values[i];
-  }
-  
-  return sum; 
+unsigned int i;
+T sum = T();
+
+if (size == 0) {
+sum = T();
+} else {
+sum = values[0];
+for (i = 1; i< size; i++) {
+sum += values[i];
+}
+}
+return sum;
 }
 
 /*
@@ -129,28 +146,27 @@ T Sum(T values[], unsigned int size) {
  * @param unsigned int index2 - The position of the second value to be swapped
  * @return bool - true if the swap was successful, otherwise false
  */
- template <typename T>
- bool SwapValues(T values[], unsigned int size, unsigned int index1, unsigned int index2) {
-   unsigned int i;
-   T temp;
-   T v1 = index1; 
-   T v2= index2;
-   
-   bool isDone; 
-   // pass each value to has value to error check
-   bool has_v1 = HasValue(values, size, v1);
-   bool has_v2 = HasValue(values, size, v2);
-   
-   if (has_v1 == true && has_v2 ==true){
-     temp = values[index1];
-     values[index1] = values[index2];
-     values[index2] = temp;
-     isDone = true;
-   } else {
-     isDone = false;
-   }
-   
-   return isDone;
-   
- }
+template <typename T>
+bool SwapValues(T values[], unsigned int size, unsigned int index1,
+                unsigned int index2) {
+bool has_v1, has_v2, isDone;
+T temp;
+
+if (size < index1 || size < index2 || index1 < 0 || index2 < 0) {
+isDone = false;
+} else {
+  has_v1 = HasValue(values, size, values[index1]);
+  has_v2 = HasValue(values, size, values[index2]);
+
+  if (has_v1 == true && has_v2 == true) {
+  temp = values[index1];
+  values[index1] = values[index2];
+  values[index2] = temp;
+  isDone = true;
+  } else {
+  isDone = false;
+  }
+  }
+return isDone;
+}
 
