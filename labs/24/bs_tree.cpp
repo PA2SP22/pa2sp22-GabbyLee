@@ -24,27 +24,23 @@ unsigned int BSTree::GetSize() const {
 }
 	
 string BSTree::InOrder() {
-  InOrder(root);
+return InOrder(root);
 }
 
-bool BSTree::Insert (int contents, BSTNode*& root ) {
+bool BSTree::Insert (int contents, BSTNode*& subroot ) {
   bool isDone;
   
   BSTNode* new_kid = new BSTNode(contents); 
-  if (root == NULL){
-    root = new_kid;
+  if (subtroot == NULL){
+    subroot = new_kid;
     size++;
     isDone = true;
     
-  } else if (root < new_kid){
-    new_kid->SetLeftChild(root);
-    size++;
-    isDone = true;
+  } else if (new_kid < subroot->GetContents()){
+   return Insert(new_kid, subroot->GetLeftChild());
     
-  } else if (root < new_kid){
-    new_kid->SetRightChild(root);
-    size++;
-    isDone = true;
+  } else if (new_kid > subroot->GetContents()){
+    return Insert(new_kid, subroot->SetRightChild(root);
   
   } else if (root == new_kid) {
     isDone = false; 
@@ -52,10 +48,30 @@ bool BSTree::Insert (int contents, BSTNode*& root ) {
   return isDone;
 }
 	
-void BSTree::Clear (BSTNode*& root){
+void BSTree::Clear (BSTNode*& subroot){
+  if(subroot != NULL) {
+    
+  if (subroot ->GetLeftChild() != NULL {
+    Clear(subroot->GetLeftChild());
+  }
+  if(subroot->GetLeftChild()) {
+    Clear(subroot->GetRightChild());
+  }
   
+  delete subroot;
+  subroot = NULL;
 }
+size =0;
 	
-string BSTree::InOrder(BSTNode*& root){
+string BSTree::InOrder(BSTNode*& subroot){
+stringstream print;
+  If (subroot == NULL) {
+    print << "";
+  }
   
+  print << InOrder(subroot->GetLeftChild());
+  print << subroot->GetContents() <<;
+  print<< Inorder(subroot->GetRightChild());
+  
+ return print.str();
 }
