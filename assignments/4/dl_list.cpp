@@ -75,8 +75,13 @@ size_ = size_ - 1;
 void DLList::PopBack() {
 if (head_ == NULL){
 size_ = 0;
-std::cerr<<"The List is Empty";
+std::cerr<<"List Empty";
 return;
+} else if (head_ == tail_) {
+    
+PopFront();
+
+
 } else {
 DLNode* temp = tail_;
 tail_= tail_->GetPrevious();
@@ -155,10 +160,6 @@ bool isFound;
 // Error checking
 if (size_ == 0) {
   std::cerr << "List is Empty";
-  return;
-} else {
-if(size_ == 1 && head_->GetContents() == to_find){
-PopFront();
 }
 
 isFound = Exists(to_find);
@@ -189,7 +190,7 @@ temp = temp->GetNext();
 }
 }
 }
-}
+
 
 // Delete dllist
 void DLList::Clear() {
