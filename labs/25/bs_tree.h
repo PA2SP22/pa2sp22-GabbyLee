@@ -1,3 +1,10 @@
+/*
+*
+*
+*   help   https://github.com/PA2SP22/pa2sp22-Adolin42/blob/main/labs/25/bs_tree.cpp
+*/
+
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -19,6 +26,10 @@ BSTree();
 
 bool Insert(int contents);
 
+bool Remove(int contents) ;
+
+int FindMin();
+
 void Clear();
 
 unsigned int GetSize() const;
@@ -30,6 +41,10 @@ BSTNode* root_;
 unsigned int size_;
 
 bool Insert(int contents, BSTNode*& subroot);
+
+bool Remove(int contents, BSTNode*& subroot);
+
+int FindMin(BSTNode* subroot);
 
 void Clear(BSTNode*& subroot);
 

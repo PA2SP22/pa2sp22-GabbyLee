@@ -10,7 +10,9 @@ using std::stringstream;
 #ifndef Lee_BS_Treet_H_
 #define Lee_BS_Treet_H_
 
-// constructor
+template <class Type>
 
-//destructor 
-~
+class {
+    Type contents_;
+    BTSode* 
+}

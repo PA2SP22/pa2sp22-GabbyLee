@@ -1,6 +1,4 @@
 #include "dl_list.h"
-#include <iostream>
-
 
 /*
  * Name        : dl_list.cpp
@@ -21,7 +19,7 @@ DLList::~DLList() {
 }
 
 
-// Add contents to the front of list 
+// Member Add contents to the front of list 
 void DLList::PushFront(int contents) {
 if (head_ == NULL) {
 head_ = new DLNode(contents);
@@ -35,7 +33,11 @@ head_ = newnode;
 size_ += 1;
     }
   }
-// Add to the end of the list 
+  
+ 
+ 
+ 
+// Member Function to Add to the end of the list 
 void DLList::PushBack(int contents) {
   if (tail_ == NULL) {
   PushFront(contents);
@@ -51,11 +53,13 @@ size_ += 1;
 }
 
 
-// Remove head
+
+
+// Member function to Remove head
 void DLList::PopFront() {
  if (head_ == NULL) {
  size_ = 0;
- cerr<<"List is Empty";
+ cerr << "List Empty";
  return;
  } else if (size_== 1) {
  delete head_;
@@ -71,17 +75,16 @@ temp = NULL;
 size_ = size_ - 1;
 }
 }
-// Remove tail 
+
+
+// Member function to remove tail
 void DLList::PopBack() {
 if (head_ == NULL){
 size_ = 0;
-std::cerr<<"List Empty";
+std::cerr << "List Empty";
 return;
 } else if (head_ == tail_) {
-    
 PopFront();
-
-
 } else {
 DLNode* temp = tail_;
 tail_= tail_->GetPrevious();
@@ -91,31 +94,42 @@ size_ -=1;
    }
 }
 
+
+//Member Function: Exsist 
 bool DLList::Exists(int to_find) {
 bool isFound = false;
-
+//List is empty
 if (size_ == 0) {
 isFound = false;
 
+
+//List has 1 item
+} else if (size_ == 1 && head_ ->GetContents() == to_find) {
+isFound = true;
+
 } else {
-  DLNode* temp = head_;  
- for(unsigned int i =0; i<size_; i++){
-   if (temp->GetContents() == to_find) {
-   isFound = true;
-   break;
+DLNode* current = head_;  
+for(unsigned int i = 0; i<size_; i++) {
+if (current->GetContents() == to_find) {
+isFound = true;
+break;
 } else {
-temp = temp->GetNext();
-}   
+isFound = false;
+current = current->GetNext();
+}
 }
 }
 return isFound;
 }
 
+
+
+//Member Function: remove first occurrance
 void DLList::RemoveFirst(int to_find) {
 bool isFound;
 //Error checking
 if (size_ == 0) {
-std::cerr<<"The List is Empty";
+std::cerr<<"List Empty";
 return;
 }
 
@@ -123,8 +137,7 @@ return;
 // Error Checking 
 isFound = Exists(to_find);
 if (isFound == false) {
-std::cerr << "Value Not found";
-
+std::cerr << "Not found";
 
 // search and delete
 } else {
@@ -154,12 +167,17 @@ break;
 }
 }
 }
-// Remove all occurances of num
+
+
+
+
+
+// Member to Remove all occurances of num
 void DLList::RemoveAll(int to_find) {
 bool isFound;
 // Error checking
 if (size_ == 0) {
-  std::cerr << "List is Empty";
+  std::cerr << "List Empty";
 }
 
 isFound = Exists(to_find);
@@ -217,23 +235,33 @@ size_ -=1;
   }
 }
 
-// Getters
+
+
+// GETTERS
+
+
+
+//Member Function: GetFront
 int DLList::GetFront() {
 int to_return;
 if (size_ == 0) {
-to_return = 0;
 std::cerr <<"List Empty";
+return 0;
 } else {
 to_return = head_->GetContents();
 }
  return to_return;
 }
 
+
+
+// Member function: GetBack
 int DLList::GetBack() {
 int to_return;
+
 if (size_ == 0) {
 std::cerr << "List Empty";
-to_return = 0;
+return 0;
 } else {
 to_return = tail_->GetContents();
 }
@@ -244,10 +272,14 @@ unsigned int DLList::GetSize() const {
   return size_; 
 }
 
+
+
+
+
 //outputters
 string DLList::ToStringBackwards() {
   stringstream print;
-  DLNode* current = head_;
+ 
   
 // If list is emptey
 if (size_ == 0) {
@@ -256,33 +288,43 @@ print <<"";
 
 // If list is not empty
   } else {
+  DLNode* current = tail_;     
 for (unsigned int i = size_; i > 0; i--) {
+if (current == NULL) {
+print <<"";
+}
 if (i == 1) {
 print << current->GetContents();
  } else {
 print << current->GetContents() << ",";
+current = current->GetNext();
 }
 }
 }
 return print.str(); 
 }
 
+
+
+
 string DLList::ToStringForwards() {
 stringstream print;
 DLNode* current = head_;
 
 if (size_ == 0) {
+return <<"";
 std::cerr <<"List Empty";
-print <<"";
 } else {
 for (unsigned int i = 0; i < size_; i++) {
 if (i == size_-1) {
 print << current->GetContents() ;
 } else {
 print << current->GetContents() << ",";
+current = current->GetNext();
+print << current->GetContents();
 }
 }
-}
+} 
 return print.str();
 }
 

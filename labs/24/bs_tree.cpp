@@ -1,77 +1,81 @@
 #include "bs_tree.h"
 
+
+// Public Member Functions
 BSTree::BSTree() {
-  root = NULL;
-  size = 0;
+  root_ = NULL;
+  size_ = 0;
 }
 
-BSTree::~BSTree(){
+
+BSTree::~BSTree() {
   Clear();
 }
 
 bool BSTree::Insert(int contents) {
-  bool isDone; 
-  isDone = Insert(contents, root);
-  return isDone;
+return Insert(contents, root_);
 }
 
-void BSTree::Clear(){
-  Clear(root);
+void BSTree::Clear() {
+Clear(root_);
 }
 
 unsigned int BSTree::GetSize() const {
-  return size;
-}
-	
-string BSTree::InOrder() {
-return InOrder(root);
+return size_;
 }
 
-bool BSTree::Insert (int contents, BSTNode*& subroot ) {
+string BSTree::InOrder() {
+return InOrder(root_);
+}
+
+// Private Member Functions
+
+bool BSTree::Insert(int contents, BSTNode*& subroot ) {
   bool isDone;
-  
-  BSTNode* new_kid = new BSTNode(contents); 
-  if (subtroot == NULL){
+
+  BSTNode* new_kid = new BSTNode(contents);
+  if (subroot == NULL) {
     subroot = new_kid;
-    size++;
+    size_++;
     isDone = true;
-    
-  } else if (new_kid < subroot->GetContents()){
-   return Insert(new_kid, subroot->GetLeftChild());
-    
-  } else if (new_kid > subroot->GetContents()){
-    return Insert(new_kid, subroot->SetRightChild(root);
-  
-  } else if (root == new_kid) {
-    isDone = false; 
-  }
-  return isDone;
+
+} else if (contents < subroot->GetContents()) {
+return Insert(contents, subroot->GetLeftChild());
+
+} else if (contents > subroot->GetContents()) {
+return Insert(contents, subroot->GetRightChild());
+
+} else if (subroot->GetContents() == contents) {
+isDone = false;
 }
-	
-void BSTree::Clear (BSTNode*& subroot){
-  if(subroot != NULL) {
-    
-  if (subroot ->GetLeftChild() != NULL {
-    Clear(subroot->GetLeftChild());
-  }
-  if(subroot->GetLeftChild()) {
-    Clear(subroot->GetRightChild());
-  }
-  
-  delete subroot;
-  subroot = NULL;
+return isDone;
 }
-size =0;
-	
-string BSTree::InOrder(BSTNode*& subroot){
+
+
+
+
+void BSTree::Clear(BSTNode*& subroot) {
+if (subroot != NULL) {
+if (subroot->GetLeftChild() != NULL) {
+Clear(subroot->GetLeftChild());
+}
+if(subroot->GetRightChild() != NULL) {
+Clear(subroot->GetRightChild());
+}
+delete subroot;
+subroot = NULL;
+}
+size_ = 0;
+}
+
+string BSTree::InOrder(BSTNode*& subroot) {
 stringstream print;
-  If (subroot == NULL) {
-    print << "";
-  }
-  
+if (subroot == NULL) {
+print << "";
+} else {
   print << InOrder(subroot->GetLeftChild());
-  print << subroot->GetContents() <<;
-  print<< Inorder(subroot->GetRightChild());
-  
- return print.str();
+  print << subroot->GetContents() << " ";
+  print<< InOrder(subroot->GetRightChild());
+}
+return print.str();
 }

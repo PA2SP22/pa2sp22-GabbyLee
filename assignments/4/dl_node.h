@@ -17,29 +17,29 @@ using std::stringstream;
 
 class DLNode {
  private: 
-  int contents;
-  DLNode* prev; 
-  DLNode* next;
+  int contents_;
+  DLNode* prev_; 
+  DLNode* next_;
   
  public:
  
 // Constructor
- DLNode();
+DLNode();
  
- DLNode(int contents);
+DLNode(int contents);
  
 // Destructor
- ~DLNode();
+~DLNode();
  
 // Setters
-void SetContents(int data);
+void SetContents(int contents);
 
-void SetNext(DLNode* next);
+void SetNext(DLNode* node);
 
-void SetPrevious(DLNode* prev);
+void SetPrevious(DLNode* node);
 
 // Getters 
-int GetContents();
+int GetContents() const;
 
 DLNode* GetNext() const;
 

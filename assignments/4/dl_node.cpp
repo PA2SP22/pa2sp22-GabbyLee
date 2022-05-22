@@ -9,15 +9,15 @@
 
  // Constructor
  DLNode::DLNode() {
-   contents = 0;
-   prev = NULL;
-   next = NULL;
+   contents_ = 0;
+   prev_ = NULL;
+   next_ = NULL;
  }
  
   DLNode::DLNode(int contents) {
-   contents =contents;
-   prev = NULL;
-   next = NULL;
+   contents_ = contents;
+   prev_ = NULL;
+   next_ = NULL;
  }
  // Destructor
 DLNode::~DLNode() {
@@ -25,26 +25,26 @@ DLNode::~DLNode() {
  
  // Setters
 void DLNode::SetContents(int contents) {
-  contents = contents;
+  contents_ = contents;
 }
 void DLNode::SetNext(DLNode* node) {
-  next = node;
+  next_ = node;
 }
 
 void DLNode::SetPrevious(DLNode* node) {
-  prev = node; 
+  prev_ = node; 
 }
 
  // Getters 
-int DLNode::GetContents() {
-  return contents;
+int DLNode::GetContents() const {
+  return contents_;
 }
 
 DLNode* DLNode::GetNext() const {
-  return next;
+  return next_;
 }
 
 DLNode* DLNode::GetPrevious() const {
-  return prev; 
+  return prev_; 
 }
  
