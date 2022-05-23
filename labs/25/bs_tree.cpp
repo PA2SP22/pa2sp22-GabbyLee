@@ -48,8 +48,10 @@ return InOrder(root_);
 bool BSTree::Insert(int contents, BSTNode*& subroot ) {
   bool isDone;
 
-  BSTNode* new_kid = new BSTNode(contents);
+  
   if (subroot == NULL) {
+    // Luke: Memory Leak. You only want to call new when you want to create a node
+    BSTNode* new_kid = new BSTNode(contents);
     subroot = new_kid;
     size_++;
     isDone = true;
@@ -71,12 +73,13 @@ bool BSTree::Remove(int to_del, BSTNode*& subroot) {
 if (subroot != NULL) {
   
 // contents smaller than subroot go left
-if (to_del < subroot->GetContents() && subroot->GetLeftChild() != NULL) {
+// Luke: Let the next recursion handle the NULL
+if (to_del < subroot->GetContents()) {
 return Remove(to_del, subroot->GetLeftChild());
     
     
 // Contents greater reater than subroot go right 
-} else if (to_del > subroot->GetContents() && subroot->GetRightChild() != NULL) {
+} else if (to_del > subroot->GetContents()) {
  return Remove(to_del, subroot->GetRightChild());
 
 
@@ -94,7 +97,8 @@ return Remove(to_del, subroot->GetLeftChild());
     } else if (subroot->GetLeftChild() == NULL && subroot->GetRightChild() != NULL) {
       BSTNode* temp = subroot;
       subroot = subroot->GetRightChild();
-      temp->SetRightChild(NULL);
+      // Luke: Since you're deleting, no need to set to NULL
+      // temp->SetRightChild(NULL);
       delete temp;
       size_--;
       isDone = true;
@@ -109,9 +113,11 @@ return Remove(to_del, subroot->GetLeftChild());
 // has leaft and righ child
     } else {
       int temp =(FindMin(subroot->GetRightChild()));
-      Remove(subroot->GetContents(), subroot->GetRightChild());
+      // Luke: You need to remove the extra, which is the one you're copying
+      Remove(temp, subroot->GetRightChild());
       subroot->SetContents(temp);
-      size_--;
+      // Luke: Don't decrement size as the remove 2 lines above will do it for you
+      // size_--;
       return true;
     }
 

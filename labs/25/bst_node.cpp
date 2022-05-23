@@ -12,9 +12,11 @@ BSTNode::BSTNode(int data) {
   contents_ = data;
 }
 BSTNode::~BSTNode() {
-  delete leftChild_;
+  // Luke: Let the tree delete the node
+  // delete leftChild_;
   leftChild_ = NULL;
-  delete rightChild_;
+  // Luke: Let the tree delete the node
+  // delete rightChild_;
   rightChild_ = NULL;
 }
 
