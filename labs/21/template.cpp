@@ -39,7 +39,7 @@ for(i = 0; i < size; i++) {
   if (i == size - 1) {
   ss << values[i];
 } else {
-  ss << values[i] << sep;
+  ss <<  values[i] << sep;
 }
 }
 }
@@ -96,7 +96,8 @@ template <typename T>
 T ValueAt(T values[], unsigned int size, unsigned int index, bool &error) {
 T to_return;
 
-if (values[index] == T() || size < index || error == true) {
+if (values[index] == T() || index < 0|| error == true || size < index) {
+  error = true;
 to_return = T();
 } else {
 bool has_v1 = HasValue(values, size, values[index]);
@@ -152,7 +153,7 @@ bool SwapValues(T values[], unsigned int size, unsigned int index1,
 bool has_v1, has_v2, isDone;
 T temp;
 
-if (size < index1 || size < index2 || index1 < 0 || index2 < 0) {
+if (size < index1 || size-1 < index2 || index1 < 0 || index2 < 0) {
 isDone = false;
 } else {
   has_v1 = HasValue(values, size, values[index1]);

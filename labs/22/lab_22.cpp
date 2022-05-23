@@ -128,8 +128,17 @@ return to_return;
  * @return true of word is a palindrome, else false; empty string and single character strings
  *         are considered palindromes
  */
-bool WordIsPalindrome(string word){
-  
+bool WordIsPalindrome(string word) {
+bool isDone;
+if (word.length() == 0 || word.length() == 1) {
+isDone = true;
+} else if (word.at(word.length()- 1) == word.at(0)) {
+word = word.substr(1, word.length() - 2);
+return WordIsPalindrome(word);
+} else {
+isDone = false;
+}
+return isDone;
 }
 
 /*
@@ -144,8 +153,15 @@ bool WordIsPalindrome(string word){
  *         if the startIndex is >= the size of the array
  */
 string ArrayForwardsAsString(int array[], unsigned int start,
-                             unsigned int size){
+                             unsigned int size) {
+stringstream print;
 
+if (start >= size) {
+print << "";
+} else {
+print << array[start] << " " << ArrayForwardsAsString(array, start+1 , size);
+}
+return print.str();
 }
 
 /*
@@ -160,8 +176,15 @@ string ArrayForwardsAsString(int array[], unsigned int start,
  *         if the startIndex is < zero
  */
 string ArrayBackwardsAsString(int array[], unsigned int start, unsigned int size){
-  
-  
+  stringstream print;
+ int size2 = size, start2 = start;
+ 
+if (start2 < 0 || start2 >= size2) {
+print << "";
+} else {
+print << array[start2] <<" "<< ArrayBackwardsAsString(array, start2-1 , size2);
+}
+return print.str();  
 }
 
 

@@ -66,64 +66,77 @@ isDone = false;
 return isDone;
 }
 
-bool BSTree::Remove(int to_del, BSTNode*& subroot){
-    if (subroot == NULL) {
-    return false;
-  }
-// contents smaller than subroot
-  if (to_del < subroot->GetContents()
-      && subroot->GetLeftChild() != NULL) {
-    return Remove(to_del, subroot->GetLeftChild());
-    
-// Contents greater reater than subroot
-  } else if (to_del > subroot->GetContents() &&
-           subroot->GetRightChild() != NULL) {
-    return Remove(to_del, subroot->GetRightChild());
+bool BSTree::Remove(int to_del, BSTNode*& subroot) {
+  bool isDone;
+if (subroot != NULL) {
+  
+// contents smaller than subroot go left
+if (to_del < subroot->GetContents() && subroot->GetLeftChild() != NULL) {
+return Remove(to_del, subroot->GetLeftChild());
     
     
+// Contents greater reater than subroot go right 
+} else if (to_del > subroot->GetContents() && subroot->GetRightChild() != NULL) {
+ return Remove(to_del, subroot->GetRightChild());
+
+
 // contents equal to subroot
   } else if (to_del == subroot->GetContents()) {
-    // Check if subroot has 0 children
+    // no kids
     if (subroot->GetLeftChild() == NULL &&
         subroot->GetRightChild() == NULL) {
       delete subroot;
       subroot = NULL;
       size_--;
-      return true;
+      isDone = true;
       
-// 
-    } else if (subroot->GetLeftChild() == NULL) {
+// has only right child
+    } else if (subroot->GetLeftChild() == NULL && subroot->GetRightChild() != NULL) {
       BSTNode* temp = subroot;
       subroot = subroot->GetRightChild();
+      temp->SetRightChild(NULL);
       delete temp;
       size_--;
-      return true;
-// 
-    } else if (subroot->GetRightChild() == NULL) {
+      isDone = true;
+// has only left child
+    } else if (subroot->GetRightChild() == NULL && subroot->GetLeftChild() != NULL) {
       BSTNode* temp = subroot;
       subroot = subroot->GetLeftChild();
       delete temp;
       size_--;
+      isDone = true;
       
-// 
+// has leaft and righ child
     } else {
-      subroot->SetContents(FindMin(subroot->GetRightChild()));
+      int temp =(FindMin(subroot->GetRightChild()));
       Remove(subroot->GetContents(), subroot->GetRightChild());
+      subroot->SetContents(temp);
+      size_--;
       return true;
     }
-  }
-  return false;
+
+}
+} else {
+  isDone = false;
+}
+return isDone;
 }
 
 
 int BSTree::FindMin(BSTNode* subroot) {
-
-  if (subroot->GetLeftChild() != NULL) {
+ int to_return;
+if (subroot == NULL){
+to_return = 0;
+} else if (subroot != NULL && subroot->GetLeftChild() != NULL) {
     return FindMin(subroot->GetLeftChild());
-  }
-  return subroot->GetContents();
+} else if (subroot != NULL && subroot->GetLeftChild() == NULL ) {
+   to_return =  subroot->GetContents();
+}
+   return to_return;
 
 }
+ 
+
 
 
 void BSTree::Clear(BSTNode*& subroot) {

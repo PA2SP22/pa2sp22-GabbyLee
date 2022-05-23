@@ -1,7 +1,7 @@
 /*
 *
 *
-*   help   https://github.com/PA2SP22/pa2sp22-Adolin42/blob/main/labs/25/bs_tree.cpp
+* 
 */
 
 
@@ -18,7 +18,9 @@ using std::endl;
 #ifndef Lee_BS_Tree_Node_H_
 #define Lee_BS_Tree_Node_H_
 
-class BSTree {
+
+class BSTree{
+ 
  public:
 BSTree();
 

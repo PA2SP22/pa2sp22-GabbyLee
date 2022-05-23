@@ -10,20 +10,22 @@ using std::stringstream;
 #define Lee_BST_Node_H_
 
 
-template<typename t>
-class BSTNode{
+template<typename T>
+
+class BSTNodeT {
 private:
-BSTNodeT* leftChild;
-BSTNode* rightChild;
+BSTNodeT<T>* leftChild;
+BSTNodeT<T>* rightChild;
  public:
  
-BSTNode();
+BSTNodeT();
 
-BSTNode(int data);
+BSTNodeT(int data);
  
-~BSTNode();
+~BSTNodeT();
  
  //Setters
+
 void SetContents(int data);
  
 void SetLeftChild(BSTNode* link);
@@ -35,13 +37,13 @@ int GetContents() const;
   
 int& GetContents();
  
-BSTNode* GetLeftChild() const;
+BSTNodeT<T>* GetLeftChild() const;
   
-BSTNode*& GetLeftChild();
+BSTNodeT<T>*& GetLeftChild();
 	
-BSTNode* GetRightChild() const;
+BSTNodeT<T>* GetRightChild() const;
 	
-BSTNode*& GetRightChild();
+BSTNodeT<T>*& GetRightChild();
   
 };
 #endif

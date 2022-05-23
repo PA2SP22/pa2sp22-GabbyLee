@@ -75,7 +75,7 @@ print << "";
 } else {
   print << InOrder(subroot->GetLeftChild());
   print << subroot->GetContents() << " ";
-  print<< InOrder(subroot->GetRightChild());
+  print << InOrder(subroot->GetRightChild());
 }
 return print.str();
 }
