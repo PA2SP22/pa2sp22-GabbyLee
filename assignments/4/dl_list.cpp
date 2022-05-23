@@ -81,10 +81,19 @@ size_ = size_ - 1;
 void DLList::PopBack() {
 if (head_ == NULL){
 size_ = 0;
+<<<<<<< HEAD
 std::cerr << "List Empty";
 return;
 } else if (head_ == tail_) {
 PopFront();
+=======
+// Luke: The error messages need to be exactly what I'm looking for.
+std::cerr<<"List Empty";
+return;
+} else if (head_ == tail_) {
+  // Luke: You need to handle the 1 node case
+  PopFront();
+>>>>>>> 714948881bc4670256ca64ab374e13b407ea9ee2
 } else {
 DLNode* temp = tail_;
 tail_= tail_->GetPrevious();
