@@ -96,19 +96,13 @@ template <typename T>
 T ValueAt(T values[], unsigned int size, unsigned int index, bool &error) {
 T to_return;
 
-if (values[index] == T() || index < 0|| error == true || size < index) {
+if (size <= index) {
   error = true;
 to_return = T();
 } else {
-bool has_v1 = HasValue(values, size, values[index]);
-if (has_v1 == false) {
-  error = true;
-  to_return = T();
-  } else {
   to_return = values[index];
   error = false;
   }
-}
 return to_return;
 }
 

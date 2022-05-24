@@ -111,9 +111,7 @@ DLNode* current = head_;
 for(unsigned int i = 0; i<size_; i++) {
 if (current->GetContents() == to_find) {
 isFound = true;
-break;
 } else {
-isFound = false;
 current = current->GetNext();
 }
 }
@@ -128,7 +126,7 @@ void DLList::RemoveFirst(int to_find) {
 bool isFound;
 //Error checking
 if (size_ == 0) {
-std::cerr<<"List Empty";
+std::cerr<<"Not Found";
 return;
 }
 
