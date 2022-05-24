@@ -81,19 +81,10 @@ size_ = size_ - 1;
 void DLList::PopBack() {
 if (head_ == NULL){
 size_ = 0;
-<<<<<<< HEAD
 std::cerr << "List Empty";
 return;
 } else if (head_ == tail_) {
 PopFront();
-=======
-// Luke: The error messages need to be exactly what I'm looking for.
-std::cerr<<"List Empty";
-return;
-} else if (head_ == tail_) {
-  // Luke: You need to handle the 1 node case
-  PopFront();
->>>>>>> 714948881bc4670256ca64ab374e13b407ea9ee2
 } else {
 DLNode* temp = tail_;
 tail_= tail_->GetPrevious();
@@ -111,11 +102,10 @@ bool isFound = false;
 if (size_ == 0) {
 isFound = false;
 
-
 //List has 1 item
 } else if (size_ == 1 && head_ ->GetContents() == to_find) {
 isFound = true;
-
+// list has multiple items
 } else {
 DLNode* current = head_;  
 for(unsigned int i = 0; i<size_; i++) {
@@ -296,8 +286,8 @@ std::cerr <<"List Empty";
 print <<"";
 
 // If list is not empty
-  } else {
-  DLNode* current = tail_;     
+} else {
+ DLNode* current = tail_;     
 for (unsigned int i = size_; i > 0; i--) {
 if (current == NULL) {
 print <<"";
@@ -306,7 +296,7 @@ if (i == 1) {
 print << current->GetContents();
  } else {
 print << current->GetContents() << ",";
-current = current->GetNext();
+current = current->GetPrevious();
 }
 }
 }
@@ -318,22 +308,25 @@ return print.str();
 
 string DLList::ToStringForwards() {
 stringstream print;
-DLNode* current = head_;
 
 if (size_ == 0) {
-return <<"";
+print << "";
 std::cerr <<"List Empty";
 } else {
+DLNode* current = head_;    
 for (unsigned int i = 0; i < size_; i++) {
-if (i == size_-1) {
-print << current->GetContents() ;
+if (current == NULL) {
+print <<"";
+}
+else if (i == 1) {
+print << current->GetContents();
 } else {
 print << current->GetContents() << ",";
 current = current->GetNext();
-print << current->GetContents();
 }
 }
-} 
+}
 return print.str();
 }
+
 
