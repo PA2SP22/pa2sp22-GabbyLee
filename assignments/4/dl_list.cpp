@@ -5,7 +5,9 @@
  * Author      : Gabrielle Lee
  * Description : Assignment_4
  */
- 
+
+
+
 // Constructor
 DLList::DLList() {
 head_ = NULL;
@@ -15,11 +17,12 @@ size_ = 0;
 
 // Destructor
 DLList::~DLList() {
-  Clear(); 
+Clear();
 }
 
 
-// Member Add contents to the front of list 
+
+// Member Add contents to the front of list
 void DLList::PushFront(int contents) {
 if (head_ == NULL) {
 head_ = new DLNode(contents);
@@ -27,29 +30,29 @@ tail_= head_;
 size_ += 1;
 } else {
 DLNode* newnode = new DLNode(contents);
-head_->SetPrevious(newnode); 
+head_->SetPrevious(newnode);
 newnode->SetNext(head_);
 head_ = newnode;
 size_ += 1;
     }
   }
-  
- 
- 
- 
-// Member Function to Add to the end of the list 
+
+
+
+
+// Member Function to Add to the end of the list
 void DLList::PushBack(int contents) {
-  if (tail_ == NULL) {
-  PushFront(contents);
+if (tail_ == NULL) {
+PushFront(contents);
 
 // If the size of list is greater than one
- } else {
+} else {
 DLNode* new_node = new DLNode(contents);
 tail_->SetNext(new_node);
 new_node->SetPrevious(tail_);
 tail_ = new_node;
 size_ += 1;
-  }
+}
 }
 
 
@@ -57,15 +60,15 @@ size_ += 1;
 
 // Member function to Remove head
 void DLList::PopFront() {
- if (head_ == NULL) {
- size_ = 0;
- cerr << "List Empty";
- return;
- } else if (size_== 1) {
- delete head_;
- head_ = NULL;
- tail_= NULL;
- size_ -= 1;
+if (head_ == NULL) {
+size_ = 0;
+cerr << "List Empty";
+return;
+} else if (size_== 1) {
+delete head_;
+head_ = NULL;
+tail_= NULL;
+size_ -= 1;
 } else {
 DLNode* temp = head_;
 head_ = head_-> GetNext();
@@ -77,9 +80,11 @@ size_ = size_ - 1;
 }
 
 
+
+
 // Member function to remove tail
 void DLList::PopBack() {
-if (head_ == NULL){
+if (head_ == NULL) {
 size_ = 0;
 std::cerr << "List Empty";
 return;
@@ -91,24 +96,25 @@ tail_= tail_->GetPrevious();
 tail_->SetNext(NULL);
 delete temp;
 size_ -=1;
-   }
+}
 }
 
 
-//Member Function: Exsist 
+
+// Member Function: Exsist
 bool DLList::Exists(int to_find) {
 bool isFound = false;
-//List is empty
+// List is empty
 if (size_ == 0) {
 isFound = false;
 
-//List has 1 item
+// List has 1 item
 } else if (size_ == 1 && head_ ->GetContents() == to_find) {
 isFound = true;
 // list has multiple items
 } else {
-DLNode* current = head_;  
-for(unsigned int i = 0; i<size_; i++) {
+DLNode* current = head_;
+for (unsigned int i = 0; i < size_; i++) {
 if (current->GetContents() == to_find) {
 isFound = true;
 } else {
@@ -121,17 +127,17 @@ return isFound;
 
 
 
-//Member Function: remove first occurrance
+// Member Function: remove first occurrance
 void DLList::RemoveFirst(int to_find) {
 bool isFound;
-//Error checking
+// Error checking
 if (size_ == 0) {
-std::cerr<<"Not Found";
+std::cerr << "Not Found";
 return;
 }
 
 
-// Error Checking 
+// Error Checking
 isFound = Exists(to_find);
 if (isFound == false) {
 std::cerr << "Not found";
@@ -141,30 +147,29 @@ std::cerr << "Not found";
 DLNode* temp = head_;
 
 // while loop to search for to_find
-for (unsigned int i = 0; i<size_; i++){
+for (unsigned int i = 0; i < size_; i++) {
 // if to_find is head_
 if (temp->GetContents() == to_find && temp == head_) {
-   PopFront();
-   break;
+PopFront();
+break;
 // if to_find is tail
 } else if (temp->GetContents() == to_find && temp == tail_) {
-   PopBack();
-   break;
-} else if (temp->GetContents() == to_find && temp != tail_ && temp != head_){
+PopBack();
+break;
+} else if (temp->GetContents() == to_find && temp != tail_ && temp != head_) {
 DLNode* temp2;
-temp2 = temp->GetPrevious(); 
+temp2 = temp->GetPrevious();
 temp2->SetNext(temp->GetNext());
 temp->GetNext()->SetPrevious(temp2);
 delete temp;
 size_ -= 1;
 break;
 } else {
- temp = temp->GetNext();   
+temp = temp->GetNext();
 }
 }
 }
 }
-
 
 
 
@@ -181,20 +186,20 @@ isFound = Exists(to_find);
 if (isFound == false) {
 std::cerr <<"Not Found";
 
-// search and delete 
+// search and delete
 } else {
 DLNode* temp = head_;
 for (unsigned int i = 0; i < size_; i++) {
 // if to_find is head_
 if (temp->GetContents() == to_find && temp == head_) {
-   PopFront();
-// if to_find is tail     
+PopFront();
+// if to_find is tail
 } else if (temp->GetContents() == to_find && temp == tail_) {
-   PopBack();
+PopBack();
 // loop to search and delete if to find is not head_/tail_
-} else if (temp->GetContents() == to_find && temp != head_ && temp!= tail_){
+} else if (temp->GetContents() == to_find && temp != head_ && temp!= tail_) {
   DLNode* temp2;
-  temp2 = temp->GetPrevious(); 
+  temp2 = temp->GetPrevious();
   temp2->SetNext(temp->GetNext());
   temp->GetNext()->SetPrevious(temp2);
   delete temp;
@@ -219,26 +224,26 @@ delete head_;
 head_ = NULL;
 tail_ = NULL;
 size_ -=1;
+
+
+
 // Size of list is greater than 2
 } else {
-  while (head_ != NULL) {
-  DLNode* temp = head_;
-  head_ = head_->GetNext();
-  delete temp;
-  size_-=1;
-  }
-  head_ = NULL;
-  tail_= NULL;
+while (head_ != NULL) {
+DLNode* temp = head_;
+head_ = head_->GetNext();
+delete temp;
+size_-=1;
+}
+head_ = NULL;
+tail_= NULL;
   }
 }
-
-
 
 // GETTERS
 
 
-
-//Member Function: GetFront
+// Member Function: GetFront
 int DLList::GetFront() {
 int to_return;
 if (size_ == 0) {
@@ -247,7 +252,7 @@ return 0;
 } else {
 to_return = head_->GetContents();
 }
- return to_return;
+return to_return;
 }
 
 
@@ -266,18 +271,18 @@ return to_return;
 }
 
 unsigned int DLList::GetSize() const {
-  return size_; 
+return size_;
 }
 
 
 
 
 
-//outputters
+// outputters
 string DLList::ToStringBackwards() {
   stringstream print;
- 
-  
+
+
 // If list is emptey
 if (size_ == 0) {
 std::cerr <<"List Empty";
@@ -285,20 +290,20 @@ print <<"";
 
 // If list is not empty
 } else {
- DLNode* current = tail_;     
+DLNode* current = tail_;
 for (unsigned int i = size_; i > 0; i--) {
 if (current == NULL) {
 print <<"";
 }
 if (i == 1) {
 print << current->GetContents();
- } else {
+} else {
 print << current->GetContents() << ",";
 current = current->GetPrevious();
 }
 }
 }
-return print.str(); 
+return print.str();
 }
 
 
@@ -311,12 +316,11 @@ if (size_ == 0) {
 print << "";
 std::cerr <<"List Empty";
 } else {
-DLNode* current = head_;    
+DLNode* current = head_;
 for (unsigned int i = 0; i < size_; i++) {
 if (current == NULL) {
 print <<"";
-}
-else if (i == 1) {
+} else if (i == 1) {
 print << current->GetContents();
 } else {
 print << current->GetContents() << ",";

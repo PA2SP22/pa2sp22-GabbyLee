@@ -18,15 +18,15 @@ using std::cerr;
 #ifndef Lee_DLList_H_
 #define Lee_DLList_H_
 
+
+
 class DLList {
-  private: 
-  unsigned int size_;
-  DLNode* head_;
-  DLNode* tail_; 
-  
+ private:
+unsigned int size_;
+DLNode* head_;
+DLNode* tail_;
 
- public: 
-
+ public:
 DLList();
 
 ~DLList();
@@ -35,7 +35,7 @@ void PushFront(int contents);
 
 void PushBack(int contents);
 
-void PopFront(); 
+void PopFront();
 
 void PopBack();
 
@@ -47,7 +47,7 @@ void RemoveAll(int num);
 
 void Clear();
 
-int GetFront(); 
+int GetFront();
 
 int GetBack();
 

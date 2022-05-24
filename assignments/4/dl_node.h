@@ -16,21 +16,20 @@ using std::stringstream;
 #define Lee_DLNode_H_
 
 class DLNode {
- private: 
+ private:
   int contents_;
-  DLNode* prev_; 
+  DLNode* prev_;
   DLNode* next_;
-  
+
  public:
- 
 // Constructor
 DLNode();
- 
+
 DLNode(int contents);
- 
+
 // Destructor
 ~DLNode();
- 
+
 // Setters
 void SetContents(int contents);
 
@@ -38,13 +37,12 @@ void SetNext(DLNode* node);
 
 void SetPrevious(DLNode* node);
 
-// Getters 
+// Getters
 int GetContents() const;
 
 DLNode* GetNext() const;
 
-DLNode* GetPrevious() const; 
- 
-}; 
+DLNode* GetPrevious() const; S
+};
 
 #endif
