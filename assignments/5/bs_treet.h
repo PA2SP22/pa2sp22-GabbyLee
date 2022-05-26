@@ -1,3 +1,12 @@
+/*
+ * Name        : bs_treet.h
+ * Author      : Gabrielle Lee
+ * Description : Assignment_5
+ */
+#ifndef Lee_BS_Treet_H_
+#define Lee_BS_Treet_H_
+
+
 #include <iostream>
 #include <string>
 #include <sstream>
@@ -5,61 +14,67 @@
 using std::cout;
 using std::endl;
 using std::string;
-using std::stringstream
+using std::stringstream;
 
 
-
-#ifndef Lee_BS_Treet_H_
-#define Lee_BS_Treet_H_
-
-template <class T>
-
+template <typename T>
 class BSTreeT {
 
-  
-  
+// Constuctors and Destructor
  public:
-BSTree();
+BSTreeT();
  
-~BSTree();
+~BSTreeT();
 
-unsigned int GetSize() const;
 
+// Helper Setters
 void Clear();
 
-bool Insert(int add);
+int Insert(T add);
 
-bool Exsist(to_find);
+int Remove(T to_del);
 
-int Remove(to_del);
 
-BSTreeT<T>* Get(to_find);
+// Helper Checkers
+bool Exists(T to_find);
 
+
+// Helper Getters
+unsigned int GetSize() const;
+
+BSTNodeT<T>* Get(T to_get);
+
+
+// Helper printers
 string ToStringForwards();
 
 string ToStringBackwards();
 
 
+// Private Functions
 private:
-  BSTreeT<T>* root_;
+  BSTNodeT<T>* root_;
   int size_ = 0;
- 
-void Clear();
 
-bool Insert(int add, BSTNode*&<T> subroot);
+// Setters
+void Clear(BSTNodeT<T>*& subroot);
 
-bool Remove(int contents, BSTNode*&<T> subroot);
+int Insert(T add, BSTNodeT<T>*& subroot);
 
-BSTreeT<T>* Get(BSTNode* subroot);
+int Remove(T to_del, BSTNodeT<T>*& subroot);
 
-int Exsist(BSTNode*<T> subroot);
 
-void Clear(BSTNode*&<T> subroot);
+//Getters
+BSTNodeT<T>* Get(T to_get, BSTNodeT<T>*& subroot);
 
-string ToStringForwards(BSTNode*&<T> subroot);
 
-string ToStringForwards(BSTNode*&<T> subroot);
+// Checker Functions
+bool Exists(T to_find, BSTNodeT<T>*& subroot);
 
+// Printers
+string ToStringForwards(BSTNodeT<T>*& subroot);
+
+string ToStringBackwards(BSTNodeT<T>*& subroot);
 };
 
 #endif

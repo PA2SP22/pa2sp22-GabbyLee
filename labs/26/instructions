@@ -32,12 +32,8 @@ Public Function:
 DERIVED class name: FoodItem (base Item)
 Filenames: food_item.h/food_item.cpp
 
-Private Data Members:
-	calories_, unsigned int
-	unit_of_measure_, string (such as "ounces")
-	units_, double
-	
-Public Constructors/Destructor:
+
+	Public Constructors/Destructor:
   Constructor with 5 parameters for private member variables of this class and parent.
     -Default arguments for name_("fooditem"), value_(0), calories_(0),
 	                       unit_of_measure_("nounits"), units_(0).

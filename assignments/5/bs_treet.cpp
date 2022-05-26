@@ -1,65 +1,82 @@
-
-
-
-
-BSTreeT<T>::BSTreeT(){
+#include "bs_treet.h"
+/*
+ * Name        : bs_treet.cpp
+ * Author      : Gabrielle Lee
+ * Description : Assignment_5
+ */
+ 
+ 
+// Constuctors and Destructor
+ template<typename T>
+BSTreeT<T>::BSTreeT() {
     root_ = NULL;
     size_ = 0; 
 }
- 
-BSTreeT<T>::~BSTree(){
+ template<typename T>
+BSTreeT<T>::~BSTreeT() {
  Clear();   
 }
 
-unsigned int BSTreeT<T>::GetSize() const{
-    return size_
-}
+// Helper Functions
 
-void BSTreeT<T>::Clear(){
+// Setters
+ template<typename T>
+void BSTreeT<T>::Clear() {
     Clear(root_);
 }
-
-bool BSTreeT<T>::Insert(int add){
-    return Insert(add, root_);
+ template<typename T>
+int BSTreeT<T>::Insert(T add) {
+ return Insert(add, root_);
+}
+ template<typename T>
+int BSTreeT<T>::Remove(T to_del){
+ return Remove(to_del, root_);
 }
 
-bool BSTreeT<T>::Exsist(to_find){
-bool to_return;
-if (root == NULL){
-to_return =  0;
-    } else {
-  to_retrun = FindMin(root_);
+// Helper checker functions
+ template<typename T>
+bool BSTreeT<T>::Exists(T to_find) {
+  return  Exists(to_find, root_);
 }
 
-int BSTreeT<T>::Remove(to_del){
-int to_return;
-to_return = Remove(to_del, root_);
+
+// Helper Getters
+// To get size
+template<typename T>
+unsigned int BSTreeT<T>::GetSize() const {
+ return size_;
 }
 
-BSTreeT<T>* BSTreeT<T>::Get(to_find) {
- BSTreeT<T>* to_return;  
-    
+// helper to Get user defined tree node
+ template<typename T>
+BSTNodeT<T>* BSTreeT<T>::Get(T to_get) {
+ return Get(to_get, root_);
 }
 
+// helper to print string forwards
+ template<typename T>
 string BSTreeT<T>::ToStringForwards() {
-  return  ToStringForwards(root_);
-
+ return ToStringForwards(root_);
 }
 
-string BSTreeT<T>::ToStringBackwards(){
-  return  ToStringBackwards(root_);
-}
-
-
- 
-void BSTreeT<T>::Clear(BSTNodeT*& subroot) {
+// helper to print string backwards
+ template<typename T>
+string BSTreeT<T>::ToStringBackwards() {
+ return ToStringBackwards(root_);
     
-if (subroot != NULL) {
-if (subroot->GetLeftChild() != NULL) {
-Clear(subroot->GetLeftChild());
 }
-if(subroot->GetRightChild() != NULL) {
-Clear(subroot->GetRightChild());
+
+
+// Private functions 
+ template<typename T>
+void BSTreeT<T>::Clear(BSTNodeT<T>*& subroot) {
+            
+if (subroot != NULL) {
+if (subroot->GetLeftd() != NULL) {
+Clear(subroot->GetLeft());
+}
+if(subroot->GetRight() != NULL) {
+Clear(subroot->GetRight());
 }
 delete subroot;
 subroot = NULL;
@@ -68,32 +85,138 @@ size_ = 0;
 }
 
 
-bool BSTreeT<T>::Insert(int add, BSTNode*&<T> subroot){
-bool isDone;
+ template<typename T>
+ int BSTreeT<T>::Insert(T add, BSTNodeT<T>*& subroot) {
+ int to_return;
 
- BSTNode* new_kid = new BSTNode(contents);
- if (subroot == NULL) {
+
+if (subroot == NULL) {
+BSTNodeT<T>* new_kid = new BSTNodeT<T>(add);    
 subroot = new_kid;
 size_++;
-isDone = true;
+subroot->IncreaseCount();
+to_return = subroot->GetCount();
 
-} else if (contents < subroot->GetContents()) {
-return Insert(contents, subroot->GetLeftChild());
+} else if (add < subroot->GetContents()) {
+return Insert(add, subroot->GetLeftChild());
 
-} else if (contents > subroot->GetContents()) {
-return Insert(contents, subroot->GetRightChild());
+} else if (add > subroot->GetContents()) {
+return Insert(add, subroot->GetRightChild());
 
-} else if (subroot->GetContents() == contents) {
-isDone = false;
+} else if (subroot->GetContents() == add) {
+subroot->IncreaseCount();
+to_return = subroot->GetCount();
 }
-return isDone;
+return to_return;
 }
 
-bool BSTreeT<T>::Remove(int contents, BSTNode*&<T> subroot){
+// to remove contents from tree
+ template<typename T>
+int BSTreeT<T>::Remove(T to_del, BSTNodeT<T>*& subroot) {
+int to_return;
+    if (subroot != NULL) {
+  
+// contents smaller than subroot go left
+if (to_del < subroot->GetContents()) {
+return Remove(to_del, subroot->GetLeft());
     
+    
+// Contents greater reater than subroot go right 
+} else if (to_del > subroot->GetContents()) {
+ return Remove(to_del, subroot->GetRight());
+
+
+// contents equal to subroot
+  } else if (to_del == subroot->GetContents()) {
+    // no kids
+    if (subroot->GetLeft() == NULL &&
+        subroot->GetRight() == NULL) {
+      delete subroot;
+      subroot = NULL;
+      size_--;
+      subroot->DecreaseCount();
+      to_return = subroot->GetCount();
+      
+// has only right child
+    } else if (subroot->GetLeft() == NULL && subroot->GetRight() != NULL) {
+      BSTNodeT<T>* temp = subroot;
+      subroot = subroot->GetRight();
+      // Luke: Since you're deleting, no need to set to NULL
+      // temp->SetRightChild(NULL);
+      delete temp;
+      size_--;
+      to_return = subroot->GetCount();
+// has only left child
+    } else if (subroot->GetRight() == NULL && subroot->GetLeft() != NULL) {
+      BSTNodeT<T>* temp = subroot;
+      subroot = subroot->GetLeft();
+      delete temp;
+      size_--;
+      subroot->DecreaseCount();
+      to_return = subroot->GetCount();
+      
+// has left and right child
+    } else {
+      int temp =(FindMin(subroot->GetRight()));
+      Remove(temp, subroot->GetRight());
+      subroot->SetContents(temp);
+      subroot->DecreaseCount();
+      to_return = subroot->GetCount();
+    }
+
+}
+} else {
+to_return = 0;
+}
+return to_return;
 }
 
-BSTreeT<T>*::BSTreeT<T>Get(int to_get, BSTNode* subroot) {
+
+
+
+// function to check if contents exsist
+ template<typename T>
+bool BSTreeT<T>::Exists(T to_find, BSTNodeT<T>*& subroot ) {
+if (subroot == NULL){
+return false;
+}
+
+// Go left
+if (to_find < subroot->GetContents()) {
+ if(subroot->GetContents() == to_find) {
+    return true;
+
+} else if(subroot-> GetLeftChild() != NULL) {
+return Get(to_find, subroot->Getleft());
+
+} else {
+
+    return false;
+
+}
+   
+// Go right 
+} else if (to_find > subroot->GetContents()) {
+if (subroot->GetContents() == to_find) {
+   return true;
+} else if (subroot->GetRightChild() != NULL) {
+
+return Get(to_find, subroot->GetRight());
+
+} else {
+return false;
+}
+
+}
+
+}
+
+
+
+
+// Function to retive input
+ template<typename T>
+BSTNodeT<T>* BSTreeT<T>::Get(T to_get, BSTNodeT<T>*& subroot) {
 
 if (subroot == NULL){
 return NULL;
@@ -103,20 +226,19 @@ return NULL;
 } else if (to_get < subroot->GetContents()) {
 if(subroot->GetContents() == to_get) {
     return subroot;
-}  else if(subroot-> GetLeftChild() != NULL) {
-return Get(to_get, subroot->GetleftChild());
+}  else if(subroot-> GetLeft() != NULL) {
+return Get(to_get, subroot->Getleft());
 } else {
     return NULL;
 }
 
 
-   
 // Go right 
 } else if (to_get > subroot->GetContents()) {
 if(subroot->GetContents() == to_get) {
-    to_return = subroot;
-} else if(subroot-> GetRightChild() != NULL) {
-return Get(to_get, subroot->GetRightChild());
+    return subroot;
+} else if(subroot-> GetRight() != NULL) {
+return Get(to_get, subroot->GetRight());
 } else {
     return NULL;
 }
@@ -125,67 +247,28 @@ return Get(to_get, subroot->GetRightChild());
 
 }
 
-bool BSTreeT<T>::Exsist(int to_find, BSTNode*<T> subroot) {
-if (subroot == NULL){
-return NULL;
-}
 
-// Go left
-if (to_find < subroot->GetContents()) {
-
-if(subroot->GetContents() == to_get) {
-
-    return true;
-
-} else if(subroot-> GetLeftChild() != NULL) {
- 
-return Get(to_get, subroot->GetleftChild());
-
+ template<typename T>
+string BSTreeT<T>::ToStringForwards(BSTNodeT<T>*& subroot) {
+stringstream print;
+if (subroot == NULL) {
+print << "";
 } else {
-
-    return NULL;
-
+  print << InOrder(subroot->GetLeft());
+  print << subroot->GetContents() << " ";
+  print<< InOrder(subroot->GetRight());
 }
-   
-// Go right 
-} else if (to_get > subroot->GetContents()) {
-if (subroot->GetContents() == to_get) {
-   return true;
-} else if (subroot->GetRightChild() != NULL) {
-
-return Get(to_get, subroot->GetRightChild());
-
+return print.str();
+}
+ template<typename T>
+string BSTreeT<T>::ToStringBackwards(BSTNodeT<T>*& subroot) {
+stringstream print;
+if (subroot == NULL) {
+print << "";
 } else {
-return NULL;
+  print << InOrder(subroot->GetLeft());
+  print << subroot->GetContents() << " ";
+  print<< InOrder(subroot->GetRight());
 }
-
-}
-    
-}
-
-void BSTreeT<T>::Clear(BSTNode*&<T> subroot){
-  if (subroot != NULL) {
-if (subroot->GetLeftChild() != NULL) {
-Clear(subroot->GetLeftChild());
-}
-if(subroot->GetRightChild() != NULL) {
-Clear(subroot->GetRightChild());
-}
-delete subroot;
-subroot = NULL;
-}
-size_ = 0;  
-}
-
-string BSTreeT<T>::ToStringForwards(BSTNode*&<T> subroot){
-if (size_ = 0){
-    print<<"";
-} else {
-
-print << (ToStringForwards(subroot)); 
-}
-}
-
-string BSTreeT<T>::ToStringForwards(BSTNode*&<T> subroot){
-    
+return print.str();
 }

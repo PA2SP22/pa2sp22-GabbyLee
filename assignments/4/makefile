@@ -13,9 +13,9 @@ ${MAIN}: ${MAIN}.cpp ${H_FILES} ${CPP_FILES}
 
 
 # Type 'make style' to check your code style
-s style: ../../helpful_files/cpplint.py
-	python $< --filter=-runtime/references,-legal/copyright,-readability/streams,-runtime/explicit,-build/header_guard,-build/include ${H_FILES} ${CPP_FILES} driver.cpp
+style: ../../helpful_files/cpplint.py
+	python $< --filter=-runtime/references,-legal/copyright,-readability/streams,-runtime/explicit,-build/header_guard,-build/include ${H_FILES} ${CPP_FILES}
 
 # Type 'make clean' to remove the executable
-c clean:
+clean:
 	rm -rf ${MAIN}

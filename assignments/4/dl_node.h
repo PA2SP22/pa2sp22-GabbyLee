@@ -42,7 +42,7 @@ int GetContents() const;
 
 DLNode* GetNext() const;
 
-DLNode* GetPrevious() const; S
+DLNode* GetPrevious() const;
 };
 
 #endif
