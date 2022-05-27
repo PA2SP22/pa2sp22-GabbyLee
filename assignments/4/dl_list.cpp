@@ -186,6 +186,8 @@ isFound = Exists(to_find);
 if (isFound == false) {
 std::cerr <<"Not Found";
 
+} else if (isFound == true && size_ == 1) {
+  PopFront();
 // search and delete
 } else {
 DLNode* temp = head_;
@@ -320,7 +322,7 @@ DLNode* current = head_;
 for (unsigned int i = 0; i < size_; i++) {
 if (current == NULL) {
 print <<"";
-} else if (i == 1) {
+} else if (i == size_ -1) {
 print << current->GetContents();
 } else {
 print << current->GetContents() << ",";
