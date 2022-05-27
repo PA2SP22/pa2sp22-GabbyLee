@@ -4,8 +4,8 @@
  * Author      : Gabrielle Lee
  * Description : Assignment_5
  */
- 
- 
+
+
 // Constuctors and Destructor
  template<typename T>
 BSTreeT<T>::BSTreeT() {

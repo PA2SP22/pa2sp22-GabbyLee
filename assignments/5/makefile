@@ -1,7 +1,6 @@
 # Makefile for Assignment 5
 CXX = g++
 MAIN = assignment_5_unit_test
-CPP_FILES = bs_nodet.cpp bs_treet.cpp
 H_FILES = bs_nodet.h bs_treet.h
 CXXFLAGS = -Wall -Wextra -pedantic -g
 

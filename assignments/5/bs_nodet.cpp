@@ -82,3 +82,4 @@ template<typename T>
 int BSTNodeT<T>::GetCount() const {
   return nodeCount; 
 }
+
